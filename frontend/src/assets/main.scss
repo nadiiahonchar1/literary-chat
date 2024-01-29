@@ -1,0 +1,18 @@
+//varibles
+@import "./varibles/_color";
+@import "./varibles/_fonts";
+@import "./varibles/_size";
+
+//component/greestings/button
+@import "@/components/greetings/button-style.scss";
+
+//pages
+@import "./pages/greetings/greetings.scss";
+@import "./pages/greetings/onbording.scss";
+@import "./pages/greetings/acquaintance.scss";
+
+//global style
+@import "./global/global.scss";
+
+//resets
+@import "./resets/resets.scss";

@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Raleway:wght@100..900&display=swap");
+
+/* SourceSansPro-400 */
+// @font-face {
+//   font-display: swap;
+//   font-family: "SourceSansPro";
+//   font-style: normal;
+//   font-weight: 400;
+//   src: url("../fonts/SourceSansPro-Regular.otf") format("opentype");
+// }
+
+//all site
+$font: "Raleway", sans-serif;
+$font2: "Montserrat", sans-serif;
+// $font3: "SourceSansPro", sans-serif;
+
+//btn
+$weightbtn: 600;
+$textbtn: 500;
+
+//text title/sub
+$weighttext: 700;
+$subtext: 400;

@@ -1,0 +1,29 @@
+@import "@/assets/varibles/_color";
+@import "@/assets/varibles/_size";
+@import "@/assets/varibles/_fonts";
+// style for first-btn
+.btn {
+  width: $widthbtn;
+  background-color: $slidebtn;
+  border-radius: $borderradius;
+  margin: 0 0 7px 0;
+  &__title {
+    padding: 17.5px 0 17.5px 0;
+    color: $textcolor;
+    font-weight: $weightbtn;
+    font-size: $textsize;
+    line-height: 21px;
+  }
+}
+// style for second-btn
+.skip {
+  width: $widthbtn;
+  background-color: $backgroundcolor;
+  &__text {
+    padding: 17.5px 0 17.5px 0;
+    color: $btnskip;
+    font-weight: $textbtn;
+    font-size: 18px;
+    line-height: 21px;
+  }
+}

@@ -1,0 +1,90 @@
+.background-onbording {
+  width: 100%;
+  height: 236px;
+  border-radius: 24px;
+  position: relative;
+  margin-bottom: 142px;
+}
+
+.background-onbording-first {
+  background: linear-gradient(180deg, #ebf3e4 0%, #bbdd9c 100%);
+}
+
+.background-onbording-second {
+  background: linear-gradient(180deg, #e6eeee 0%, #b2d6d6 100%);
+}
+
+.background-onbording-third {
+  background: linear-gradient(180deg, #d9e8f9 0%, #afc6e0 100%);
+}
+.background-onbording-fifth {
+  background: linear-gradient(180deg, #e6eeee 0%, #b2d6d6 100%);
+  height: 173px;
+}
+.background-onbording-sixth {
+  background: linear-gradient(180deg, #fff9d7 0%, #f0e180 100%);
+  height: 173px;
+  margin-bottom: 115px;
+}
+
+.girl-one {
+  position: absolute;
+  bottom: -30px;
+  left: 27px;
+  width: 122px;
+  height: 204px;
+}
+
+.girl-two {
+  position: absolute;
+  bottom: -19px;
+  right: 24px;
+  width: 145px;
+  height: 152px;
+}
+
+.girl-with-book {
+  position: absolute;
+  bottom: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 323px;
+  height: 142px;
+}
+
+.boy-with-book {
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 243px;
+  height: 207px;
+}
+
+.gou-in-app {
+  position: absolute;
+  bottom: -58px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 137px;
+  height: 226px;
+}
+
+.get-acquainted {
+  position: absolute;
+  bottom: -61px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  height: 203px;
+}
+
+.slide {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-container {
+  flex: 1 1 auto;
+}

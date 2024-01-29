@@ -1,0 +1,49 @@
+* {
+  font-family: $font;
+}
+html,
+body {
+  height: 100%;
+}
+// #app {
+//   margin: 0 auto;
+//   max-width: $maxwidth;
+// @media screen and (min-width: $minwigth) and (max-width: $maxwidth){
+//     max-width: $maxwidth;
+// }
+// }
+.container {
+  min-width: 320px;
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 48px 16px 24px 16px;
+}
+img {
+  width: 100%;
+}
+.h2 {
+  font-weight: $weighttext;
+  font-size: 48px;
+  color: $titleSlide;
+  line-height: 47px;
+  text-align: center;
+}
+.h3 {
+  font-weight: $subtext;
+  font-size: 20px;
+  line-height: 24px;
+  color: $subtittle;
+  text-align: center;
+}
+body {
+  color: var(--main-text-color);
+  background: var(--background-color, $background-color);
+
+  font-family: $font;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+  margin: 0;
+  padding: 0;
+}

@@ -1,0 +1,99 @@
+/* Montserrat-500 */
+/* @font-face {
+  font-display: swap;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  src: url("./fonts/Montserrat-Regular.ttf") format("truetype");
+} */
+
+/* SourceSansPro-400 */
+/* @font-face {
+  font-display: swap;
+  font-family: "SourceSansPro";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./fonts/SourceSansPro-Regular.otf") format("opentype");
+} */
+
+/* Raleway-400 */
+/* @font-face {
+  font-display: swap;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./fonts/Montserrat-Regular.ttf") format("truetype");
+} */
+
+/* Raleway-500 */
+/* @font-face {
+  font-display: swap;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 500;
+  src: url("./fonts/Raleway-Medium.ttf") format("truetype");
+} */
+
+/* Raleway-600 */
+/* @font-face {
+  font-display: swap;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 600;
+  src: url("./fonts/Raleway-SemiBold.ttf") format("truetype");
+} */
+
+/* Raleway-700 */
+/* @font-face {
+  font-display: swap;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 700;
+  src: url("./fonts/Raleway-Bold.ttf") format("truetype");
+} */
+
+/* :root {
+  --accent-text-color: #325f91;
+  --main-text-color: #0c0c0c;
+  --light-text-color: #fefefe;
+  --disabled-text-color: #939393;
+  --danger-text-color: #c81515;
+  --danger-disabled-text-color: #f46666;
+
+  --background-color: #fdfdfd;
+  --background-message-blue: #e6ecf3;
+  --background-message-yellow: #f9f3cc;
+
+  --main-button-color: #6792c1;
+  --accent-button-color: #325f91;
+  --disabled-button-color: #d7d8d8;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  color: var(--main-text-color);
+  background: var(--background-color, #fdfdfd);
+
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+  margin: 0;
+  padding: 0;
+} */

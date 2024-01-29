@@ -1,0 +1,83 @@
+.acquaintance {
+  &__text {
+    // margin: 0 0 86px 0;
+    text-align: center;
+    line-height: normal;
+
+    form {
+      position: relative;
+      width: 100%;
+    }
+
+    form > div > label {
+      position: absolute;
+      top: -5px;
+      left: 50%;
+      transform: translateX(-149px);
+
+      font-weight: 400;
+      font-size: 10px;
+      color: $disabled-text-color;
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 49px;
+        height: 10px;
+        background-color: $background-color;
+        bottom: 5px;
+        left: -5px;
+        z-index: -1;
+      }
+    }
+
+    form > div > input {
+      border: 1px solid $disabled-button-color;
+      border-radius: 24px;
+      width: 358px;
+      height: 56px;
+      margin-bottom: 4px;
+      padding: 18px 24px;
+      outline: none;
+
+      font-weight: 400;
+      font-size: 16px;
+      color: $main-text-color;
+
+      &:hover,
+      &:focus,
+      &:active {
+        border: 1px solid #84bf4e;
+        outline: none;
+      }
+    }
+  }
+  &__tittle {
+    margin: 0 0 8px 0;
+    font-weight: 600;
+    font-size: 32px;
+    color: $accent-text-color;
+  }
+  &__description {
+    margin: 0 0 8px 0;
+    font-weight: 400;
+    font-size: 18px;
+    color: $main-text-color;
+  }
+  &__caption {
+    margin: 0 38px 29px 38px;
+    font-weight: 400;
+    font-size: 14px;
+    color: $disabled-text-color;
+  }
+  &__explanation {
+    // margin: 0 31px 29px 31px;
+    font-weight: 400;
+    font-size: 10px;
+    color: $disabled-text-color;
+    width: 358px;
+    margin: 0 auto;
+    padding: 0 31px 29px 31px;
+    text-align: left;
+  }
+}
