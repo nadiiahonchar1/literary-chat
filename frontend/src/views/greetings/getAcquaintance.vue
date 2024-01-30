@@ -25,10 +25,9 @@
           <div class="btn-container">
             <btn
               :title="buttonTitle"
-              @click="nextpage"
               @skip-all="skipall"
               :skiptext="buttonskip"
-              buttonType="submit"
+              firstButtonType="submit"
             />
           </div>
         </form>
@@ -54,18 +53,16 @@ export default {
     btn,
   },
   methods: {
+    skipall() {
+      this.nikname = "";
+    },
     submitHandler() {
       if (this.nikname) {
         console.group("Form Data");
         console.log("Name", this.nikname);
         console.groupEnd();
+        this.$router.push("#");
       }
-    },
-    nextpage() {
-      this.$router.push("get-acquaintance");
-    },
-    skipall() {
-      this.$router.push("#");
     },
   },
 };

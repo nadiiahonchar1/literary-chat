@@ -1,9 +1,9 @@
 <template>
   <div class="slide__btn">
-    <button class="btn" :type="buttonType" @click="nextpage">
+    <button class="btn" :type="firstButtonType" @click="nextpage">
       <div class="btn__title">{{ title }}</div>
     </button>
-    <button class="skip" @click="skip">
+    <button class="skip" :type="secondButtonType" @click="skip">
       <div class="skip__text">{{ skiptext }}</div>
     </button>
   </div>
@@ -14,7 +14,11 @@ export default {
   props: {
     title: String,
     skiptext: String,
-    buttonType: {
+    firstButtonType: {
+      type: String,
+      default: "button",
+    },
+    secondButtonType: {
       type: String,
       default: "button",
     },
