@@ -22,31 +22,36 @@
           <p class="acquaintance__explanation">
             Нікнейм може містити лише латинські літери і цифри.
           </p>
+          <div class="btn-container">
+            <btn
+              :title="buttonTitle"
+              @click="nextpage"
+              @skip-all="skipall"
+              :skiptext="buttonskip"
+              buttonType="submit"
+            />
+          </div>
         </form>
       </div>
-    </div>
-    <div class="btn-container">
-      <btn
-        :title="buttonTitle"
-        @click="nextpage"
-        @skip-all="skipall"
-        :skiptext="buttonskip"
-      />
-      <page-indicator :totalPages="3" :currentPage="1"></page-indicator>
     </div>
   </div>
 </template>
 
 <script>
 import AppInput from "@/components/UI/AppInput.vue";
+import btn from "@/components/greetings/button-table.vue";
+
 export default {
   data() {
     return {
       nikname: "",
+      buttonTitle: "Зберегти та увійти в чат",
+      buttonskip: "Скасувати",
     };
   },
   components: {
     AppInput,
+    btn,
   },
   methods: {
     submitHandler() {
@@ -55,6 +60,12 @@ export default {
         console.log("Name", this.nikname);
         console.groupEnd();
       }
+    },
+    nextpage() {
+      this.$router.push("get-acquaintance");
+    },
+    skipall() {
+      this.$router.push("#");
     },
   },
 };

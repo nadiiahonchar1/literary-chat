@@ -7,8 +7,7 @@
     "installation": "npm i && cd ./backend && npm i && cd ../frontend && npm i",
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "cd ./backend && npm run start:dev",
-    "front": "cd ./frontend && npm run run",
-    "front:build": "cd ./frontend && npm run build"
+    "front": "cd ./frontend && npm run run"
   },
   "author": "",
   "license": "ISC"
