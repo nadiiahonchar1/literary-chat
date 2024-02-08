@@ -1,9 +1,11 @@
 <template>
-  <header class="container">
-    <button-with-icon iconName="back-arrow.svg" @clicked="goBack" />
-    <h2>Мій профіль</h2>
+  <div>
+    <header class="container-header header">
+      <button-with-icon iconName="back-arrow.svg" @clicked="goBack" />
+      <h2>Мій профіль</h2>
+    </header>
     <div class="container"></div>
-  </header>
+  </div>
 </template>
 
 <script>
