@@ -15,3 +15,37 @@
   color: $accent-text-color;
   line-height: 47px;
 }
+
+.your-photo {
+  margin: 0 auto;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #9db9d7 0%, #5380b1 100%);
+  padding: 20px;
+  margin-bottom: 8px;
+}
+
+.your-photo-icon {
+  width: 56px;
+  height: 56px;
+}
+
+.your-nickname {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 47px;
+  color: $accent-text-color;
+  text-align: center;
+  margin-bottom: 3px;
+}
+
+.change-photo-button {
+  width: 100%;
+  text-align: center;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration-line: underline;
+  cursor: pointer;
+}
