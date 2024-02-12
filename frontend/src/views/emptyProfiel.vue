@@ -21,6 +21,25 @@
           <app-modal v-if="modal" @close="modal = false"></app-modal>
         </teleport>
       </div>
+      <form class="profiel-form" @submit.prevent="submitHandler">
+        <app-input
+          class="profiel-input"
+          label="Як тебе називати?"
+          v-model.trim="name"
+        ></app-input>
+        <app-area
+          labelareaLabel="Розкажи трішки більше про себе"
+          v-model.trim="aboutYou"
+        ></app-area>
+        <div class="btn-container">
+          <btn
+            :title="buttonTitle"
+            @skip-all="skipall"
+            :skiptext="buttonskip"
+            firstButtonType="submit"
+          />
+        </div>
+      </form>
     </div>
   </div>
 </template>
@@ -28,19 +47,39 @@
 <script>
 import ButtonWithIcon from "@/components/UI/ButtonWithIcon.vue";
 import AppModal from "@/components/UI/AppModal.vue";
+import AppInput from "@/components/UI/AppInput.vue";
+import AppArea from "@/components/UI/AppArea.vue";
+import btn from "@/components/greetings/button-table.vue";
 
 export default {
-  components: { ButtonWithIcon, AppModal },
+  components: { ButtonWithIcon, AppModal, AppInput, AppArea, btn },
   data() {
     return {
       backIcon: "@/assets/icons/back-arrow.svg",
       yourNickname: "@yourNickname",
       modal: false,
+      name: "",
+      aboutYou: "",
+      buttonTitle: "Зберегти зміни",
+      buttonskip: "Скасувати",
     };
   },
   methods: {
     goBack() {
       window.history.back();
+    },
+    skipall() {
+      this.name = "";
+      this.aboutYou = "";
+    },
+    submitHandler() {
+      if (this.name && this.aboutYou) {
+        // console.group("Form Data");
+        console.log("Name", this.name);
+        console.log("Name", this.aboutYou);
+        // console.groupEnd();
+        // this.$router.push("#");
+      }
     },
   },
 };
