@@ -54,3 +54,27 @@
 .profiel-input {
   margin-bottom: 5px;
 }
+
+.profiel-area {
+  margin-bottom: 16px;
+}
+
+.button-text-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.button-text-count {
+  font-family: $font2;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.saved-button {
+  margin-bottom: 8px;
+}
+
+.setting-button {
+  margin-bottom: 40px;
+}

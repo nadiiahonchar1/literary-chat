@@ -28,6 +28,7 @@
               @skip-all="skipall"
               :skiptext="buttonskip"
               firstButtonType="submit"
+              :first-button-disabled="isNextDisabled"
             />
           </div>
         </form>
@@ -63,6 +64,11 @@ export default {
         console.groupEnd();
         this.$router.push("#");
       }
+    },
+  },
+  computed: {
+    isNextDisabled() {
+      return !this.nikname;
     },
   },
 };

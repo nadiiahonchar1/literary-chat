@@ -28,15 +28,26 @@
           v-model.trim="name"
         ></app-input>
         <app-area
+          class="profiel-area"
           labelareaLabel="Розкажи трішки більше про себе"
           v-model.trim="aboutYou"
         ></app-area>
+        <button-icon-text class="saved-button" iconName="saved.svg">
+          <div class="button-text-container">
+            <span>Збережене</span>
+            <span class="button-text-count">{{ savedCount }}</span>
+          </div>
+        </button-icon-text>
+        <button-icon-text class="setting-button" iconName="settings.svg"
+          >Налаштування
+        </button-icon-text>
         <div class="btn-container">
           <btn
             :title="buttonTitle"
             @skip-all="skipall"
             :skiptext="buttonskip"
             firstButtonType="submit"
+            :first-button-disabled="isNextDisabled"
           />
         </div>
       </form>
@@ -50,9 +61,17 @@ import AppModal from "@/components/UI/AppModal.vue";
 import AppInput from "@/components/UI/AppInput.vue";
 import AppArea from "@/components/UI/AppArea.vue";
 import btn from "@/components/greetings/button-table.vue";
+import ButtonIconText from "@/components/UI/ButtonIconText.vue";
 
 export default {
-  components: { ButtonWithIcon, AppModal, AppInput, AppArea, btn },
+  components: {
+    ButtonWithIcon,
+    AppModal,
+    AppInput,
+    AppArea,
+    btn,
+    ButtonIconText,
+  },
   data() {
     return {
       backIcon: "@/assets/icons/back-arrow.svg",
@@ -62,6 +81,7 @@ export default {
       aboutYou: "",
       buttonTitle: "Зберегти зміни",
       buttonskip: "Скасувати",
+      savedCount: 0,
     };
   },
   methods: {
@@ -74,12 +94,16 @@ export default {
     },
     submitHandler() {
       if (this.name && this.aboutYou) {
-        // console.group("Form Data");
+        console.group("Form Data");
         console.log("Name", this.name);
-        console.log("Name", this.aboutYou);
-        // console.groupEnd();
-        // this.$router.push("#");
+        console.log("About", this.aboutYou);
+        console.groupEnd();
       }
+    },
+  },
+  computed: {
+    isNextDisabled() {
+      return !(this.name && this.aboutYou);
     },
   },
 };

@@ -1,0 +1,28 @@
+.btnIconText {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  border-bottom: 1px solid $disabled-button-color;
+  padding: 12px 0;
+}
+
+.btnIconText__img {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.img-container {
+  border-radius: 50%;
+  background-color: $background-message-blue;
+  width: 32px;
+  height: 32px;
+  border: none;
+  padding: 6px;
+}

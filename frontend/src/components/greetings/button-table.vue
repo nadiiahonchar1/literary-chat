@@ -1,6 +1,11 @@
 <template>
   <div class="slide__btn">
-    <button class="btn" :type="firstButtonType" @click="nextpage">
+    <button
+      class="btn"
+      :type="firstButtonType"
+      @click="nextpage"
+      :disabled="firstButtonDisabled"
+    >
       <div class="btn__title">{{ title }}</div>
     </button>
     <button class="skip" :type="secondButtonType" @click="skip">
@@ -21,6 +26,10 @@ export default {
     secondButtonType: {
       type: String,
       default: "button",
+    },
+    firstButtonDisabled: {
+      type: Boolean,
+      default: false,
     },
   },
   emits: ["click", "skip-all"],
