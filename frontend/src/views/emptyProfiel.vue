@@ -8,8 +8,15 @@
       <div class="yout-info">
         <div class="your-photo">
           <img
+            v-if="!profilePhoto"
             class="your-photo-icon"
             src="@/assets/icons/book-open-reader.svg"
+            alt="Фото вашого профілю"
+          />
+          <img
+            v-else
+            class="your-photo-icon"
+            :src="profilePhoto"
             alt="Фото вашого профілю"
           />
         </div>
@@ -18,7 +25,12 @@
           Змінити фото
         </button>
         <teleport to="#modal">
-          <app-modal v-if="modal" @close="modal = false"></app-modal>
+          <app-modal
+            v-if="modal"
+            @close="modal = false"
+            @imageSelected="handleImageSelected"
+            :handleImageSelected="handleImageSelected"
+          ></app-modal>
         </teleport>
       </div>
       <form class="profiel-form" @submit.prevent="submitHandler">
@@ -82,6 +94,7 @@ export default {
       buttonTitle: "Зберегти зміни",
       buttonskip: "Скасувати",
       savedCount: 0,
+      profilePhoto: localStorage.getItem("savedPhoto") || null,
     };
   },
   methods: {
@@ -91,6 +104,9 @@ export default {
     skipall() {
       this.name = "";
       this.aboutYou = "";
+    },
+    handleImageSelected(imageData) {
+      console.log("imageData", imageData);
     },
     submitHandler() {
       if (this.name && this.aboutYou) {

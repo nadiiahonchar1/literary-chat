@@ -11,7 +11,6 @@
 export default {
   props: {
     iconName: String,
-    // buttonText: String,
   },
   computed: {
     iconPath() {

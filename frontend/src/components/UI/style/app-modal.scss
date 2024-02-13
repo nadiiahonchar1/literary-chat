@@ -1,8 +1,7 @@
 .modal {
   position: fixed;
   top: 290px;
-  min-width: 320px;
-  max-width: 768px;
+  width: 100%;
   padding: 24px 16px;
   background: $background-message-blue;
   z-index: 1000;
@@ -10,6 +9,17 @@
   border-radius: 12px;
   transform: translateX(-50%);
   box-shadow: 3px 3px 4px 0px rgba(215, 216, 216, 0.8);
+  text-align: center;
+
+  img {
+    width: 32px;
+    height: 32px;
+  }
+  h3 {
+    margin-bottom: 16px;
+    font-size: 12px;
+    font-weight: 600;
+  }
 }
 
 .modal-backdrop {
@@ -19,4 +29,24 @@
   left: 0;
   bottom: 0;
   background: transparent;
+}
+
+.img-border {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: $background-color;
+  padding: 12px;
+  margin-bottom: 8px;
+}
+
+.modal-button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.button-gallery {
+  margin-right: 40px;
+  font-size: 12px;
+  font-weight: 600;
 }
