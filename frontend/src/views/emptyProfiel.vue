@@ -15,7 +15,7 @@
           />
           <img
             v-else
-            class="your-photo-icon"
+            class="your-photo-icon original-photo"
             :src="profilePhoto"
             alt="Фото вашого профілю"
           />

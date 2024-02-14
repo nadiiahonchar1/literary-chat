@@ -24,11 +24,19 @@
   background: linear-gradient(180deg, #9db9d7 0%, #5380b1 100%);
   padding: 20px;
   margin-bottom: 8px;
+  overflow: hidden;
 }
 
 .your-photo-icon {
   width: 56px;
   height: 56px;
+}
+
+.original-photo {
+  // width: 100%;
+  // height: auto;
+  background-size: cover;
+  transform: scale(1.7);
 }
 
 .your-nickname {
