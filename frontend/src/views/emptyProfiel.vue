@@ -27,9 +27,8 @@
         <teleport to="#modal">
           <app-modal
             v-if="modal"
-            @close="modal = false"
+            @close="handleModalClose"
             @imageSelected="handleImageSelected"
-            :handleImageSelected="handleImageSelected"
           ></app-modal>
         </teleport>
       </div>
@@ -105,8 +104,18 @@ export default {
       this.name = "";
       this.aboutYou = "";
     },
-    handleImageSelected(imageData) {
-      console.log("imageData", imageData);
+    // handleImageSelected(imageData) {
+    //   console.log("In handleImageSelected");
+    //   this.profilePhoto = imageData;
+    //   localStorage.setItem("savedPhoto", imageData);
+    // },
+    handleModalClose() {
+      this.modal = false;
+      console.log("imageData in profiel", this.imageData);
+      console.log(
+        "profilePhoto in profiel",
+        localStorage.getItem("savedPhoto") || null
+      );
     },
     submitHandler() {
       if (this.name && this.aboutYou) {

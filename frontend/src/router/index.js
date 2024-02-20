@@ -7,6 +7,7 @@ import slide4 from '@/views/greetings/slide-4.vue';
 import getAcquaintance from "@/views/greetings/getAcquaintance.vue";
 import emptyProfiel from "@/views/emptyProfiel.vue";
 
+
 const routes = [
   {
     path: "/",

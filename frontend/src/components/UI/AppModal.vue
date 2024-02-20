@@ -1,38 +1,36 @@
 <template>
-  <div class="modal-backdrop" @click="$emit('close')">
-    <div class="modal container smmall-top-padding">
-      <h3>Обери фото або зроби нове</h3>
-      <button class="modal-button button-gallery" @click="choosePhoto">
-        <div class="img-border">
-          <img
-            class="btnIconText__img"
-            src="@/assets/icons/gallery.svg"
-            alt="Icon"
-          />
-        </div>
-        Галерея
-      </button>
-      <button class="modal-button" @click="openCamera">
-        <div class="img-border">
-          <img
-            class="btnIconText__img"
-            src="@/assets/icons/camera.svg"
-            alt="Icon"
-          />
-        </div>
-        Камера
-      </button>
+  <Transition name="modalT">
+    <div class="modal-backdrop" @click="$emit('close')">
+      <div class="modal container smmall-top-padding">
+        <h3>Обери фото або зроби нове</h3>
+        <button class="modal-button button-gallery" @click="choosePhoto">
+          <div class="img-border">
+            <img
+              class="btnIconText__img"
+              src="@/assets/icons/gallery.svg"
+              alt="Icon"
+            />
+          </div>
+          Галерея
+        </button>
+        <button class="modal-button" @click="openCamera">
+          <div class="img-border">
+            <img
+              class="btnIconText__img"
+              src="@/assets/icons/camera.svg"
+              alt="Icon"
+            />
+          </div>
+          Камера
+        </button>
+      </div>
     </div>
-  </div>
+  </Transition>
 </template>
 
 <script>
 export default {
   emits: ["close", "imageSelected"],
-  props: ["handleImageSelected"],
-  mounted() {
-    console.log("handleImageSelected prop:", this.handleImageSelected);
-  },
   methods: {
     choosePhoto() {
       if (this.isMobile()) {
@@ -47,6 +45,7 @@ export default {
           reader.onload = (event) => {
             localStorage.setItem("savedPhoto", event.target.result);
             this.$emit("imageSelected", event.target.result);
+            this.$emit("close");
           };
           reader.readAsDataURL(file);
         };

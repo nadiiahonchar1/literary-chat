@@ -88,3 +88,12 @@
 .content-container {
   flex: 1 1 auto;
 }
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}

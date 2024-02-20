@@ -3,13 +3,13 @@
 </template>
 
 <script>
-import slide1 from '@/views/greetings/slide-1.vue';
+import slide1 from "@/views/greetings/slide-1.vue";
 
 export default {
   data() {
     return {
       currentpage: slide1,
     };
-  }
-}
+  },
+};
 </script>
