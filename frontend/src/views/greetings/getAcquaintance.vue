@@ -61,10 +61,8 @@ export default {
     },
     submitHandler() {
       if (this.nikname) {
-        console.group("Form Data");
-        console.log("Name", this.nikname);
-        console.groupEnd();
-        this.$router.push("#");
+        localStorage.setItem("nikname", `@${this.nikname}`);
+        this.$router.push("profiel");
       }
     },
   },
