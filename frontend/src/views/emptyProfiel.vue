@@ -1,6 +1,6 @@
 <template>
   <Transition name="fade" appear>
-    <div>
+    <div v-cloak>
       <header class="container-header header">
         <button-with-icon iconName="back-arrow.svg" @clicked="goBack" />
         <h2>Мій профіль</h2>
@@ -9,13 +9,13 @@
         <div class="yout-info">
           <div class="your-photo">
             <img
-              v-if="!profilePhoto"
+              v-show="!profilePhoto"
               class="your-photo-icon"
               src="@/assets/icons/book-open-reader.svg"
               alt="Фото вашого профілю"
             />
             <img
-              v-else
+              v-show="profilePhoto"
               class="your-photo-icon original-photo"
               :src="profilePhoto"
               alt="Фото вашого профілю"
@@ -26,11 +26,7 @@
             Змінити фото
           </button>
           <teleport to="#modal">
-            <app-modal
-              v-if="modal"
-              @close="handleModalClose"
-              @imageSelected="handleImageSelected"
-            ></app-modal>
+            <app-modal v-if="modal" @close="handleModalClose"></app-modal>
           </teleport>
         </div>
         <form class="profiel-form" @submit.prevent="submitHandler">
@@ -106,18 +102,9 @@ export default {
       this.name = "";
       this.aboutYou = "";
     },
-    // handleImageSelected(imageData) {
-    //   console.log("In handleImageSelected");
-    //   this.profilePhoto = imageData;
-    //   localStorage.setItem("savedPhoto", imageData);
-    // },
     handleModalClose() {
       this.modal = false;
-      console.log("imageData in profiel", this.imageData);
-      console.log(
-        "profilePhoto in profiel",
-        localStorage.getItem("savedPhoto") || null
-      );
+      this.profilePhoto = localStorage.getItem("savedPhoto") || null;
     },
     submitHandler() {
       if (this.name && this.aboutYou) {

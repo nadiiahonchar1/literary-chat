@@ -1,6 +1,6 @@
 <template>
   <Transition name="modalT">
-    <div class="modal-backdrop" @click="$emit('close')">
+    <div class="modal-backdrop">
       <div class="modal container smmall-top-padding">
         <h3>Обери фото або зроби нове</h3>
         <button class="modal-button button-gallery" @click="choosePhoto">
@@ -30,6 +30,9 @@
 
 <script>
 export default {
+  data() {
+    return { img: null };
+  },
   emits: ["close", "imageSelected"],
   methods: {
     choosePhoto() {
@@ -45,6 +48,7 @@ export default {
           reader.onload = (event) => {
             localStorage.setItem("savedPhoto", event.target.result);
             this.$emit("imageSelected", event.target.result);
+            this.img = event.target.result;
             this.$emit("close");
           };
           reader.readAsDataURL(file);
