@@ -56,7 +56,70 @@ export default {
         fileInput.click();
       }
     },
-    openCamera() {},
+    openCamera() {
+      if (this.isMobile()) {
+        console.log("Opening camera on mobile");
+        navigator.mediaDevices
+          .getUserMedia({ video: true })
+          .then((stream) => {
+            const video = document.createElement("video");
+            video.srcObject = stream;
+            video.onloadedmetadata = () => {
+              video.play();
+            };
+            const canvas = document.createElement("canvas");
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            const context = canvas.getContext("2d");
+            video.addEventListener("loadeddata", () => {
+              setTimeout(() => {
+                context.drawImage(video, 0, 0, canvas.width, canvas.height);
+                const imageDataURL = canvas.toDataURL("image/png");
+                localStorage.setItem("savedPhoto", imageDataURL);
+                this.$emit("imageSelected", imageDataURL);
+                this.img = imageDataURL;
+                this.$emit("close");
+                stream.getTracks().forEach((track) => track.stop());
+              }, 500);
+            });
+          })
+          .catch((error) => {
+            console.error("Error accessing camera:", error);
+          });
+      } else {
+        console.log("Opening camera on computer");
+        navigator.mediaDevices
+          .getUserMedia({ video: true })
+          .then((stream) => {
+            const video = document.createElement("video");
+            video.srcObject = stream;
+            video.onloadedmetadata = () => {
+              video.play();
+              const canvas = document.createElement("canvas");
+              canvas.width = video.videoWidth;
+              canvas.height = video.videoHeight;
+              const context = canvas.getContext("2d");
+              const drawFrame = () => {
+                context.drawImage(video, 0, 0, canvas.width, canvas.height);
+                requestAnimationFrame(drawFrame);
+              };
+              drawFrame();
+              setTimeout(() => {
+                const imageDataURL = canvas.toDataURL("image/png");
+                console.log("imageDataURL", imageDataURL);
+                this.$emit("imageSelected", imageDataURL);
+                this.img = imageDataURL;
+                this.$emit("close");
+                stream.getTracks().forEach((track) => track.stop());
+              }, 500);
+            };
+          })
+          .catch((error) => {
+            console.error("Error accessing camera:", error);
+          });
+      }
+    },
+
     isMobile() {
       const userAgent = navigator.userAgent || navigator.vendor || window.opera;
       return /android/i.test(userAgent) || /iPad|iPhone|iPod/.test(userAgent);
