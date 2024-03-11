@@ -68,8 +68,10 @@ export default {
               video.play();
             };
             const canvas = document.createElement("canvas");
-            canvas.width = video.videoWidth;
-            canvas.height = video.videoHeight;
+            const desiredWidth = 400;
+            const scaleFactor = desiredWidth / video.videoWidth;
+            canvas.width = desiredWidth;
+            canvas.height = video.videoHeight * scaleFactor;
             const context = canvas.getContext("2d");
             video.addEventListener("loadeddata", () => {
               setTimeout(() => {
@@ -95,9 +97,13 @@ export default {
             video.srcObject = stream;
             video.onloadedmetadata = () => {
               video.play();
+              const desiredWidth = 600;
+              const scaleFactor = desiredWidth / video.videoWidth;
+              video.width = desiredWidth;
+              video.height = video.videoHeight * scaleFactor * 1.3;
               const canvas = document.createElement("canvas");
-              canvas.width = video.videoWidth;
-              canvas.height = video.videoHeight;
+              canvas.width = desiredWidth;
+              canvas.height = video.videoHeight * scaleFactor * 1.3;
               const context = canvas.getContext("2d");
               const drawFrame = () => {
                 context.drawImage(video, 0, 0, canvas.width, canvas.height);
