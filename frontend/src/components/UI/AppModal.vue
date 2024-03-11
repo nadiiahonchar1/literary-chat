@@ -57,90 +57,90 @@ export default {
       }
     },
     openCamera() {
-      if (this.isMobile()) {
-        console.log("Opening camera on mobile");
-        navigator.mediaDevices
-          .getUserMedia({ video: true })
-          .then((stream) => {
-            const video = document.createElement("video");
-            video.srcObject = stream;
-            video.onloadedmetadata = () => {
-              video.play();
-            };
-            const canvas = document.createElement("canvas");
-            const desiredWidth = 400;
+      // if (this.isMobile()) {
+      //   console.log("Opening camera on mobile");
+      //   navigator.mediaDevices
+      //     .getUserMedia({ video: true })
+      //     .then((stream) => {
+      //       const video = document.createElement("video");
+      //       video.srcObject = stream;
+      //       video.onloadedmetadata = () => {
+      //         video.play();
+      //       };
+      //       const canvas = document.createElement("canvas");
+      //       const desiredWidth = 400;
+      //       const scaleFactor = desiredWidth / video.videoWidth;
+      //       canvas.width = desiredWidth;
+      //       canvas.height = video.videoHeight * scaleFactor;
+      //       const context = canvas.getContext("2d");
+      //       video.addEventListener("loadeddata", () => {
+      //         setTimeout(() => {
+      //           context.drawImage(video, 0, 0, canvas.width, canvas.height);
+      //           const imageDataURL = canvas.toDataURL("image/png");
+      //           localStorage.setItem("savedPhoto", imageDataURL);
+      //           this.$emit("imageSelected", imageDataURL);
+      //           this.img = imageDataURL;
+      //           this.$emit("close");
+      //           stream.getTracks().forEach((track) => track.stop());
+      //         }, 500);
+      //       });
+      //     })
+      //     .catch((error) => {
+      //       console.error("Error accessing camera:", error);
+      //     });
+      // } else {
+      console.log("Opening camera on computer");
+      navigator.mediaDevices
+        .getUserMedia({ video: true })
+        .then((stream) => {
+          const video = document.createElement("video");
+          video.srcObject = stream;
+          video.onloadedmetadata = () => {
+            video.play();
+            const desiredWidth = 600;
             const scaleFactor = desiredWidth / video.videoWidth;
+            video.width = desiredWidth;
+            video.height = video.videoHeight * scaleFactor * 1.3;
+            const canvas = document.createElement("canvas");
             canvas.width = desiredWidth;
-            canvas.height = video.videoHeight * scaleFactor;
+            canvas.height = video.videoHeight * scaleFactor * 1.3;
             const context = canvas.getContext("2d");
-            video.addEventListener("loadeddata", () => {
-              setTimeout(() => {
-                context.drawImage(video, 0, 0, canvas.width, canvas.height);
-                const imageDataURL = canvas.toDataURL("image/png");
-                localStorage.setItem("savedPhoto", imageDataURL);
-                this.$emit("imageSelected", imageDataURL);
-                this.img = imageDataURL;
-                this.$emit("close");
-                stream.getTracks().forEach((track) => track.stop());
-              }, 500);
-            });
-          })
-          .catch((error) => {
-            console.error("Error accessing camera:", error);
-          });
-      } else {
-        console.log("Opening camera on computer");
-        navigator.mediaDevices
-          .getUserMedia({ video: true })
-          .then((stream) => {
-            const video = document.createElement("video");
-            video.srcObject = stream;
-            video.onloadedmetadata = () => {
-              video.play();
-              const desiredWidth = 600;
-              const scaleFactor = desiredWidth / video.videoWidth;
-              video.width = desiredWidth;
-              video.height = video.videoHeight * scaleFactor * 1.3;
-              const canvas = document.createElement("canvas");
-              canvas.width = desiredWidth;
-              canvas.height = video.videoHeight * scaleFactor * 1.3;
-              const context = canvas.getContext("2d");
-              const drawFrame = () => {
-                context.drawImage(video, 0, 0, canvas.width, canvas.height);
-                requestAnimationFrame(drawFrame);
-              };
-              drawFrame();
-              const previewWindow = document.createElement("div");
-              previewWindow.style.position = "fixed";
-              previewWindow.style.top = "50%";
-              previewWindow.style.right = "50%";
-              previewWindow.style.transform = "translate(50%, -50%)";
-              previewWindow.style.zIndex = "999";
-              previewWindow.appendChild(canvas);
-              const confirmButton = document.createElement("button");
-              confirmButton.textContent = "Підтвердити фото";
-              confirmButton.style.position = "fixed";
-              confirmButton.style.top = "0";
-              confirmButton.style.right = "0";
-              confirmButton.style.zIndex = "9999";
-              confirmButton.onclick = () => {
-                context.drawImage(video, 0, 0, canvas.width, canvas.height);
-                const imageDataURL = canvas.toDataURL("image/png");
-                localStorage.setItem("savedPhoto", imageDataURL);
-                this.$emit("imageSelected", imageDataURL);
-                this.img = imageDataURL;
-                this.$emit("close");
-                document.body.removeChild(previewWindow);
-                stream.getTracks().forEach((track) => track.stop());
-              };
-              previewWindow.appendChild(confirmButton);
-              document.body.appendChild(previewWindow);
+            const drawFrame = () => {
+              context.drawImage(video, 0, 0, canvas.width, canvas.height);
+              requestAnimationFrame(drawFrame);
             };
-          })
-          .catch((error) => {
-            console.error("Error accessing camera:", error);
-          });
-      }
+            drawFrame();
+            const previewWindow = document.createElement("div");
+            previewWindow.style.position = "fixed";
+            previewWindow.style.top = "50%";
+            previewWindow.style.right = "50%";
+            previewWindow.style.transform = "translate(50%, -50%)";
+            previewWindow.style.zIndex = "999";
+            previewWindow.appendChild(canvas);
+            const confirmButton = document.createElement("button");
+            confirmButton.textContent = "Підтвердити фото";
+            confirmButton.style.position = "fixed";
+            confirmButton.style.top = "0";
+            confirmButton.style.right = "0";
+            confirmButton.style.zIndex = "9999";
+            confirmButton.onclick = () => {
+              context.drawImage(video, 0, 0, canvas.width, canvas.height);
+              const imageDataURL = canvas.toDataURL("image/png");
+              localStorage.setItem("savedPhoto", imageDataURL);
+              this.$emit("imageSelected", imageDataURL);
+              this.img = imageDataURL;
+              this.$emit("close");
+              document.body.removeChild(previewWindow);
+              stream.getTracks().forEach((track) => track.stop());
+            };
+            previewWindow.appendChild(confirmButton);
+            document.body.appendChild(previewWindow);
+          };
+        })
+        .catch((error) => {
+          console.error("Error accessing camera:", error);
+        });
+      // }
     },
 
     isMobile() {
