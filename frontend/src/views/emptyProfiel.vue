@@ -86,8 +86,8 @@ export default {
       backIcon: "@/assets/icons/back-arrow.svg",
       yourNickname: localStorage.getItem("nikname") || "@yourNickname",
       modal: false,
-      name: "",
-      aboutYou: "",
+      name: localStorage.getItem("name") || "", // Зчитуємо дані з локального сховища
+      aboutYou: localStorage.getItem("aboutYou") || "", // Зчитуємо дані з локального сховища
       buttonTitle: "Зберегти зміни",
       buttonskip: "Скасувати",
       savedCount: 0,
@@ -108,6 +108,9 @@ export default {
     },
     submitHandler() {
       if (this.name && this.aboutYou) {
+        // Зберігаємо дані у локальне сховище
+        localStorage.setItem("name", this.name);
+        localStorage.setItem("aboutYou", this.aboutYou);
         console.group("Form Data");
         console.log("Name", this.name);
         console.log("About", this.aboutYou);
