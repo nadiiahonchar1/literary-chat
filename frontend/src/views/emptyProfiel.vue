@@ -16,7 +16,7 @@
             />
             <img
               v-show="profilePhoto"
-              class="your-photo-icon original-photo"
+              class="original-photo"
               :src="profilePhoto"
               alt="Фото вашого профілю"
             />

@@ -106,7 +106,7 @@ export default {
               drawFrame();
               setTimeout(() => {
                 const imageDataURL = canvas.toDataURL("image/png");
-                console.log("imageDataURL", imageDataURL);
+                localStorage.setItem("savedPhoto", imageDataURL);
                 this.$emit("imageSelected", imageDataURL);
                 this.img = imageDataURL;
                 this.$emit("close");
