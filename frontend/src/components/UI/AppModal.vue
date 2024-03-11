@@ -97,7 +97,7 @@ export default {
           video.srcObject = stream;
           video.onloadedmetadata = () => {
             video.play();
-            const desiredWidth = 600;
+            const desiredWidth = 400;
             const scaleFactor = desiredWidth / video.videoWidth;
             video.width = desiredWidth;
             video.height = video.videoHeight * scaleFactor * 1.3;
