@@ -104,14 +104,31 @@ export default {
                 requestAnimationFrame(drawFrame);
               };
               drawFrame();
-              setTimeout(() => {
+              const previewWindow = document.createElement("div");
+              previewWindow.style.position = "fixed";
+              previewWindow.style.top = "50%";
+              previewWindow.style.right = "50%";
+              previewWindow.style.transform = "translate(50%, -50%)";
+              previewWindow.style.zIndex = "999";
+              previewWindow.appendChild(canvas);
+              const confirmButton = document.createElement("button");
+              confirmButton.textContent = "Підтвердити фото";
+              confirmButton.style.position = "fixed";
+              confirmButton.style.top = "0";
+              confirmButton.style.right = "0";
+              confirmButton.style.zIndex = "9999";
+              confirmButton.onclick = () => {
+                context.drawImage(video, 0, 0, canvas.width, canvas.height);
                 const imageDataURL = canvas.toDataURL("image/png");
                 localStorage.setItem("savedPhoto", imageDataURL);
                 this.$emit("imageSelected", imageDataURL);
                 this.img = imageDataURL;
                 this.$emit("close");
+                document.body.removeChild(previewWindow);
                 stream.getTracks().forEach((track) => track.stop());
-              }, 500);
+              };
+              previewWindow.appendChild(confirmButton);
+              document.body.appendChild(previewWindow);
             };
           })
           .catch((error) => {
