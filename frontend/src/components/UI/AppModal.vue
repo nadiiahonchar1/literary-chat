@@ -36,59 +36,27 @@ export default {
   emits: ["close", "imageSelected"],
   methods: {
     choosePhoto() {
-      if (this.isMobile()) {
-        console.log("isMobile");
-      } else {
-        const fileInput = document.createElement("input");
-        fileInput.type = "file";
-        fileInput.accept = "image/*";
-        fileInput.onchange = (e) => {
-          const file = e.target.files[0];
-          const reader = new FileReader();
-          reader.onload = (event) => {
-            localStorage.setItem("savedPhoto", event.target.result);
-            this.$emit("imageSelected", event.target.result);
-            this.img = event.target.result;
-            this.$emit("close");
-          };
-          reader.readAsDataURL(file);
+      // if (this.isMobile()) {
+      //   console.log("isMobile");
+      // } else {
+      const fileInput = document.createElement("input");
+      fileInput.type = "file";
+      fileInput.accept = "image/*";
+      fileInput.onchange = (e) => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          localStorage.setItem("savedPhoto", event.target.result);
+          this.$emit("imageSelected", event.target.result);
+          this.img = event.target.result;
+          this.$emit("close");
         };
-        fileInput.click();
-      }
+        reader.readAsDataURL(file);
+      };
+      fileInput.click();
+      // }
     },
     openCamera() {
-      // if (this.isMobile()) {
-      //   console.log("Opening camera on mobile");
-      //   navigator.mediaDevices
-      //     .getUserMedia({ video: true })
-      //     .then((stream) => {
-      //       const video = document.createElement("video");
-      //       video.srcObject = stream;
-      //       video.onloadedmetadata = () => {
-      //         video.play();
-      //       };
-      //       const canvas = document.createElement("canvas");
-      //       const desiredWidth = 400;
-      //       const scaleFactor = desiredWidth / video.videoWidth;
-      //       canvas.width = desiredWidth;
-      //       canvas.height = video.videoHeight * scaleFactor;
-      //       const context = canvas.getContext("2d");
-      //       video.addEventListener("loadeddata", () => {
-      //         setTimeout(() => {
-      //           context.drawImage(video, 0, 0, canvas.width, canvas.height);
-      //           const imageDataURL = canvas.toDataURL("image/png");
-      //           localStorage.setItem("savedPhoto", imageDataURL);
-      //           this.$emit("imageSelected", imageDataURL);
-      //           this.img = imageDataURL;
-      //           this.$emit("close");
-      //           stream.getTracks().forEach((track) => track.stop());
-      //         }, 500);
-      //       });
-      //     })
-      //     .catch((error) => {
-      //       console.error("Error accessing camera:", error);
-      //     });
-      // } else {
       console.log("Opening camera on computer");
       navigator.mediaDevices
         .getUserMedia({ video: true })
@@ -140,7 +108,6 @@ export default {
         .catch((error) => {
           console.error("Error accessing camera:", error);
         });
-      // }
     },
 
     isMobile() {
