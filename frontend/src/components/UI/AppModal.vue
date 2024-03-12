@@ -1,7 +1,7 @@
 <template>
   <Transition name="modalT">
-    <div class="modal-backdrop">
-      <div class="modal container smmall-top-padding">
+    <div class="modal-backdrop" @click="closeOnBackdropClick">
+      <div class="modal container smmall-top-padding" @click.stop>
         <h3>Обери фото або зроби нове</h3>
         <button class="modal-button button-gallery" @click="choosePhoto">
           <div class="img-border">
@@ -36,9 +36,6 @@ export default {
   emits: ["close", "imageSelected"],
   methods: {
     choosePhoto() {
-      // if (this.isMobile()) {
-      //   console.log("isMobile");
-      // } else {
       const fileInput = document.createElement("input");
       fileInput.type = "file";
       fileInput.accept = "image/*";
@@ -54,10 +51,8 @@ export default {
         reader.readAsDataURL(file);
       };
       fileInput.click();
-      // }
     },
     openCamera() {
-      console.log("Opening camera on computer");
       navigator.mediaDevices
         .getUserMedia({ video: true })
         .then((stream) => {
@@ -109,11 +104,27 @@ export default {
           console.error("Error accessing camera:", error);
         });
     },
+    closeOnBackdropClick(event) {
+      if (event.target.classList.contains("modal-backdrop")) {
+        this.$emit("close");
+      }
+    },
+    closeOnEsc(event) {
+      if (event.key === "Escape") {
+        this.$emit("close");
+      }
+    },
 
     isMobile() {
       const userAgent = navigator.userAgent || navigator.vendor || window.opera;
       return /android/i.test(userAgent) || /iPad|iPhone|iPod/.test(userAgent);
     },
+  },
+  mounted() {
+    document.addEventListener("keydown", this.closeOnEsc);
+  },
+  beforeUnmount() {
+    document.removeEventListener("keydown", this.closeOnEsc);
   },
 };
 </script>

@@ -108,13 +108,8 @@ export default {
     },
     submitHandler() {
       if (this.name && this.aboutYou) {
-        // Зберігаємо дані у локальне сховище
         localStorage.setItem("name", this.name);
         localStorage.setItem("aboutYou", this.aboutYou);
-        console.group("Form Data");
-        console.log("Name", this.name);
-        console.log("About", this.aboutYou);
-        console.groupEnd();
       }
     },
   },
