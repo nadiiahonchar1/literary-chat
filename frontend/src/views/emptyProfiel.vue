@@ -66,7 +66,7 @@
 
 <script>
 import ButtonWithIcon from "@/components/UI/ButtonWithIcon.vue";
-import AppModal from "@/components/UI/AppModal.vue";
+import AppModal from "@/components/UI/Modal/AppModal.vue";
 import AppInput from "@/components/UI/AppInput.vue";
 import AppArea from "@/components/UI/AppArea.vue";
 import btn from "@/components/greetings/button-table.vue";
