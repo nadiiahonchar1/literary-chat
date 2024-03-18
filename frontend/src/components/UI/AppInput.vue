@@ -3,7 +3,7 @@
     <label :for="id">{{ label }}</label>
     <input
       class="input"
-      type="text"
+      :type="inptext"
       :id="id"
       :placeholder="placeholder"
       :value="modelValue"
@@ -29,6 +29,10 @@ export default {
     error: {
       type: String,
     },
+    inptext:{
+      type: String,
+      default: 'text'
+    }
   },
   methods: {
     change(event) {

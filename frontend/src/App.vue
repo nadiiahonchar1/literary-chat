@@ -1,4 +1,4 @@
-<template id="app" v-cloak>
+<template id="app">
   <router-view></router-view>
 </template>
 

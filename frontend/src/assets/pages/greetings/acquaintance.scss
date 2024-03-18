@@ -46,7 +46,7 @@
       &:hover,
       &:focus,
       &:active {
-        border: 1px solid #84bf4e;
+        border: 1px solid $input-border;
         outline: none;
       }
     }
@@ -77,3 +77,4 @@
     text-align: left;
   }
 }
+

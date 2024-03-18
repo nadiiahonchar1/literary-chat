@@ -35,7 +35,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import AppInput from "@/components/UI/AppInput.vue";
 import btn from "@/components/greetings/button-table.vue";

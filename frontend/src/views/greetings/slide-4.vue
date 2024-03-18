@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     nextpage() {
-      this.$router.push("get-acquaintance");
+      this.$router.push("regist-form");
     },
     skipall() {
       this.$router.push("#");
