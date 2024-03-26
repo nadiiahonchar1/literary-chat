@@ -86,8 +86,8 @@ export default {
       backIcon: "@/assets/icons/back-arrow.svg",
       yourNickname: localStorage.getItem("nikname") || "@yourNickname",
       modal: false,
-      name: localStorage.getItem("name") || "", // Зчитуємо дані з локального сховища
-      aboutYou: localStorage.getItem("aboutYou") || "", // Зчитуємо дані з локального сховища
+      name: localStorage.getItem("name") || "",
+      aboutYou: localStorage.getItem("aboutYou") || "",
       buttonTitle: "Зберегти зміни",
       buttonskip: "Скасувати",
       savedCount: 0,

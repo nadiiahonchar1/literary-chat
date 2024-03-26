@@ -37,7 +37,6 @@ export default {
   data() {
     return {
       buttonTitle: "Почнемо!",
-      buttonskip: "Пропустити",
     };
   },
   methods: {
