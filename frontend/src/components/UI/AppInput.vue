@@ -8,8 +8,9 @@
       :placeholder="placeholder"
       :value="modelValue"
       @input="change"
+      :style="{ borderColor: error ? 'red' : '' }"
     />
-    <small v-if="error">{{ error }}</small>
+    <p class="input-error" v-if="error">{{ error }}</p>
   </div>
 </template>
 
@@ -43,4 +44,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.invalid {
+  border-color: red;
+}
+</style>

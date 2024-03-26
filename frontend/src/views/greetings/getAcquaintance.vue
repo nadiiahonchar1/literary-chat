@@ -19,9 +19,16 @@
             Додаткову інформацію ти завжди зможеш внести в особистому кабінеті.
           </p>
           <form @submit.prevent="submitHandler">
-            <app-input label="Нікнейм" v-model.trim="nikname"></app-input>
-            <p class="acquaintance__explanation">
-              Нікнейм може містити лише латинські літери і цифри.
+            <app-input
+              label="Нікнейм"
+              v-model.trim="nikname"
+              :error="nicknameError"
+            ></app-input>
+            <p
+              class="acquaintance__explanation"
+              :class="{ 'text-hidden': nicknameError }"
+            >
+              Лише латинські літери і цифри.
             </p>
             <div class="btn-container">
               <btn
@@ -48,26 +55,29 @@ export default {
     return {
       nikname: "",
       buttonTitle: "Зберегти та увійти",
+      nicknameError: false,
     };
   },
   components: {
     AppInput,
     btn,
   },
+  computed: {
+    isNextDisabled() {
+      return !this.nikname;
+    },
+  },
   methods: {
     skipall() {
       this.nikname = "";
     },
     submitHandler() {
-      if (this.nikname) {
+      if (/^[a-zA-Z0-9]+$/.test(this.nikname)) {
         localStorage.setItem("nikname", `@${this.nikname}`);
         this.$router.push("profiel");
+      } else {
+        this.nicknameError = "Лише латинські літери і цифри.";
       }
-    },
-  },
-  computed: {
-    isNextDisabled() {
-      return !this.nikname;
     },
   },
 };
