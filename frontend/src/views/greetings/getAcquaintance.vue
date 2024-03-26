@@ -47,8 +47,7 @@ export default {
   data() {
     return {
       nikname: "",
-      buttonTitle: "Зберегти та увійти в чат",
-      buttonskip: "Скасувати",
+      buttonTitle: "Зберегти та увійти",
     };
   },
   components: {
