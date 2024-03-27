@@ -64,19 +64,39 @@ export default {
   },
   computed: {
     isNextDisabled() {
-      return !this.nikname;
+      if (!this.nikname) {
+        this.skipError();
+        return true;
+      } else {
+        if (!/^[a-zA-Z0-9]+$/.test(this.nikname)) {
+          this.setErrorMessage();
+          return true;
+        }
+      }
+      this.skipError();
+      return false;
+      // return !this.nikname;
     },
   },
   methods: {
     skipall() {
       this.nikname = "";
     },
+    skipError() {
+      this.nicknameError = "";
+    },
+    niknameValidate() {
+      return /^[a-zA-Z0-9]+$/.test(this.nikname);
+    },
+    setErrorMessage() {
+      this.nicknameError = "Лише латинські літери і цифри.";
+    },
     submitHandler() {
-      if (/^[a-zA-Z0-9]+$/.test(this.nikname)) {
+      if (this.niknameValidate()) {
         localStorage.setItem("nikname", `@${this.nikname}`);
         this.$router.push("profiel");
       } else {
-        this.nicknameError = "Лише латинські літери і цифри.";
+        this.setErrorMessage();
       }
     },
   },

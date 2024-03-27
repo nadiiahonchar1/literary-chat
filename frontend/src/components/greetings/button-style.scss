@@ -14,6 +14,11 @@
     font-size: $textsize;
     line-height: 21px;
   }
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: $accent-button-color;
+  }
 }
 // style for second-btn
 .skip {

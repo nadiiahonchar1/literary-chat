@@ -44,8 +44,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.invalid {
-  border-color: red;
-}
-</style>
+<style lang="scss" scoped></style>
