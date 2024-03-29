@@ -10,5 +10,8 @@
     "front": "cd ./frontend && npm run run"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "pinia": "^2.1.7"
+  }
 }
