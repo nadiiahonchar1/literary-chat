@@ -1,22 +1,35 @@
 <template>
   <div class="chat-list">
-    <div v-for="chat in chats" :key="chat.id" class="chat-item">
-      <router-link :to="`/${chat.iconName}`">
-        <img
-          :src="require(`@/assets/icons/${chat.iconName}.svg`)"
-          :alt="chat.name"
-          class="chat-icon"
-        />
-        <span>{{ chat.name }}</span>
-      </router-link>
-    </div>
+    <header class="container-header header">
+      <button-with-icon iconName="list.svg" />
+      <h2>Кімнати</h2>
+      <button-with-icon iconName="search.svg" />
+    </header>
+    <ul class="container-chat">
+      <li v-for="chat in chats" :key="chat.id" class="chat-item">
+        <router-link :to="`/${chat.iconName}`" class="chat-link">
+          <div class="icon-border">
+            <img
+              :src="require(`@/assets/icons/${chat.iconName}.svg`)"
+              :alt="chat.name"
+              class="chat-icon"
+            />
+          </div>
+          <span class="chat-name">{{ chat.name }}</span>
+        </router-link>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
 import chatsList from "@/chat-list.json";
+import ButtonWithIcon from "@/components/UI/ButtonWithIcon.vue";
 
 export default {
+  components: {
+    ButtonWithIcon,
+  },
   data() {
     return {
       chats: chatsList,
@@ -25,14 +38,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.chat-item {
-  margin: 10px;
-  text-align: center;
-}
-
-.chat-icon {
-  width: 50px;
-  height: 50px;
-}
-</style>
+<style lang="scss"></style>

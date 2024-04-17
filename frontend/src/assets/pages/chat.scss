@@ -1,0 +1,38 @@
+.container-chat {
+  min-width: 320px;
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+.chat-item {
+  width: 100%;
+  padding: 6px 16px;
+  border-bottom: solid 1px $disabled-button-color;
+}
+
+.icon-border {
+  width: 56px;
+  height: 56px;
+  border: solid 2px $main-button-color;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 16px;
+}
+.chat-icon {
+  width: 40px;
+  height: 40px;
+}
+.chat-link {
+  display: flex;
+  align-items: center;
+}
+.chat-name {
+  font-family: $font;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: $weighttext;
+  line-height: normal;
+  color: $accent-text-color;
+}
