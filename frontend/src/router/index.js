@@ -6,6 +6,8 @@ import slide3 from '@/views/greetings/slide-3.vue';
 import slide4 from '@/views/greetings/slide-4.vue';
 import getAcquaintance from "@/views/greetings/getAcquaintance.vue";
 import emptyProfiel from "@/views/emptyProfiel.vue";
+import MainPage from '@/views/mainPage.vue';
+import ChatPage from '@/views/chatPage.vue';
 
 
 const routes = [
@@ -42,6 +44,16 @@ const routes = [
         path: "profiel",
         component: emptyProfiel,
         name: emptyProfiel,
+      },
+      {
+        path: "main",
+        component: MainPage,
+        name: MainPage,
+      },
+      {
+        path: "/:chatName", 
+        component: ChatPage,
+        name: "ChatPage",
       },
     ],
   },

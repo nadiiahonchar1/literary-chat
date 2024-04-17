@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "iconName": "personal-messages",
+    "name": "Особисті повідомлення"
+  },
+  {
+    "id": 2,
+    "iconName": "ukrainian-classics",
+    "name": "Українська класика"
+  },
+  {
+    "id": 3,
+    "iconName": "modern-literature",
+    "name": "Сучасна література"
+  },
+  {
+    "id": 4,
+    "iconName": "world-literature",
+    "name": "Зарубіжна література"
+  },
+  {
+    "id": 5,
+    "iconName": "non-fiction",
+    "name": "Нехудожня література"
+  },
+  {
+    "id": 6,
+    "iconName": "children's-literature",
+    "name": "Дитяча література"
+  },
+  {
+    "id": 7,
+    "iconName": "novelties",
+    "name": "Нові імена та новинки"
+  },
+  {
+    "id": 8,
+    "iconName": "biographies",
+    "name": "Біографії, мемуари"
+  },
+  {
+    "id": 9,
+    "iconName": "exchange-of-books",
+    "name": "Обмін книгами"
+  }
+]
