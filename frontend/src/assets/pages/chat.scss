@@ -13,27 +13,74 @@
 .icon-border {
   width: 56px;
   height: 56px;
-  border: solid 2px $main-button-color;
+  border-width: 2px;
+  border-style: solid;
   border-radius: 50%;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   margin-right: 16px;
+
+  &__attached {
+    border-color: #84bf4e;
+  }
+  &__unattached {
+    border-color: $main-button-color;
+  }
 }
 .chat-icon {
   width: 40px;
   height: 40px;
-  fill: #6792c1;
+  &__attached {
+    fill: #84bf4e;
+  }
+  &__unattached {
+    fill: $main-button-color;
+  }
 }
+
 .chat-link {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
+
+.name-chat-wrapper {
+  display: flex;
+  align-items: center;
+}
+
 .chat-name {
   font-family: $font;
   font-size: 17px;
   font-style: normal;
   font-weight: $weighttext;
   line-height: normal;
-  color: $accent-text-color;
+  &__attached {
+    color: #84bf4e;
+  }
+  &__unattached {
+    color: $accent-text-color;
+  }
+}
+
+.number-person-centered {
+  text-align: center;
+  font-family: $font2;
+  font-weight: $textbtn;
+  color: $disabled-text-color;
+  font-size: 12px;
+}
+
+.person-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.namber-person-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  flex-direction: column;
+  justify-content: center;
 }
