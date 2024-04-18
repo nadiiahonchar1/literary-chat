@@ -2,46 +2,61 @@
   {
     "id": 1,
     "iconName": "personal-messages",
-    "name": "Особисті повідомлення"
+    "name": "Особисті повідомлення",
+    "numberOfPersons": 0
   },
   {
     "id": 2,
     "iconName": "ukrainian-classics",
-    "name": "Українська класика"
+    "name": "Українська класика",
+    "numberOfPersons": 58
   },
   {
     "id": 3,
     "iconName": "modern-literature",
-    "name": "Сучасна література"
+    "name": "Сучасна література",
+    "numberOfPersons": 101
   },
   {
     "id": 4,
     "iconName": "world-literature",
-    "name": "Зарубіжна література"
+    "name": "Зарубіжна література",
+    "numberOfPersons": 203
   },
   {
     "id": 5,
     "iconName": "non-fiction",
-    "name": "Нехудожня література"
+    "name": "Нехудожня література",
+    "numberOfPersons": 90
   },
   {
     "id": 6,
     "iconName": "children's-literature",
-    "name": "Дитяча література"
+    "name": "Дитяча література",
+    "numberOfPersons": 87
   },
   {
     "id": 7,
     "iconName": "novelties",
-    "name": "Нові імена та новинки"
+    "name": "Нові імена та новинки",
+    "numberOfPersons": 120
   },
   {
     "id": 8,
     "iconName": "biographies",
-    "name": "Біографії, мемуари"
+    "name": "Біографії, мемуари",
+    "numberOfPersons": 78
   },
   {
     "id": 9,
     "iconName": "exchange-of-books",
-    "name": "Обмін книгами"
+    "name": "Обмін книгами",
+    "numberOfPersons": 67
+  },
+  {
+    "id": 10,
+    "iconName": "live-meetings",
+    "name": "Живі зустрічі",
+    "numberOfPersons": 67
   }
 ]
