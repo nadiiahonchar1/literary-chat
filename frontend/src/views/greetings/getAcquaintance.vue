@@ -22,6 +22,7 @@
             <app-input label="Нікнейм" v-model.trim="nikname"></app-input>
             <p class="acquaintance__explanation">
               Нікнейм може містити лише латинські літери і цифри.
+              Лише латинські літери і цифри.
             </p>
             <div class="btn-container">
               <btn
@@ -113,6 +114,44 @@ export default {
       } else {
         document.querySelector(".slide").classList.remove("active");
         document.querySelector(".content-container").classList.remove("load");
+      }
+    },
+  },
+  computed: {
+    isNextDisabled() {
+      if (!this.nikname) {
+        this.skipError();
+        return true;
+      } else {
+        if (!/^[a-zA-Z0-9]+$/.test(this.nikname)) {
+          this.setErrorMessage();
+          return true;
+        }
+      }
+      this.skipError();
+      return false;
+      // return !this.nikname;
+    },
+  },
+  methods: {
+    skipall() {
+      this.nikname = "";
+    },
+    skipError() {
+      this.nicknameError = "";
+    },
+    niknameValidate() {
+      return /^[a-zA-Z0-9]+$/.test(this.nikname);
+    },
+    setErrorMessage() {
+      this.nicknameError = "Лише латинські літери і цифри.";
+    },
+    submitHandler() {
+      if (this.niknameValidate()) {
+        localStorage.setItem("nikname", `@${this.nikname}`);
+        this.$router.push("profiel");
+      } else {
+        this.setErrorMessage();
       }
     },
   },

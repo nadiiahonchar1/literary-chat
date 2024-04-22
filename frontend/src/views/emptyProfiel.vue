@@ -40,15 +40,15 @@
             labelareaLabel="Розкажи трішки більше про себе"
             v-model.trim="aboutYou"
           ></app-area>
-          <button-icon-text class="saved-button" iconName="saved.svg">
+          <!-- <button-icon-text class="saved-button" iconName="saved.svg">
             <div class="button-text-container">
               <span>Збережене</span>
               <span class="button-text-count">{{ savedCount }}</span>
             </div>
-          </button-icon-text>
-          <button-icon-text class="setting-button" iconName="settings.svg"
+          </button-icon-text> -->
+          <!-- <button-icon-text class="setting-button" iconName="settings.svg"
             >Налаштування
-          </button-icon-text>
+          </button-icon-text> -->
           <div class="btn-container">
             <btn
               :title="buttonTitle"
@@ -70,7 +70,7 @@ import AppModal from "@/components/UI/Modal/AppModal.vue";
 import AppInput from "@/components/UI/AppInput.vue";
 import AppArea from "@/components/UI/AppArea.vue";
 import btn from "@/components/greetings/button-table.vue";
-import ButtonIconText from "@/components/UI/ButtonIconText.vue";
+// import ButtonIconText from "@/components/UI/ButtonIconText.vue";
 
 export default {
   components: {
@@ -79,18 +79,16 @@ export default {
     AppInput,
     AppArea,
     btn,
-    ButtonIconText,
   },
   data() {
     return {
       backIcon: "@/assets/icons/back-arrow.svg",
       yourNickname: localStorage.getItem("nikname") || "@yourNickname",
       modal: false,
-      name: localStorage.getItem("name") || "", // Зчитуємо дані з локального сховища
-      aboutYou: localStorage.getItem("aboutYou") || "", // Зчитуємо дані з локального сховища
+      name: localStorage.getItem("name") || "",
+      aboutYou: localStorage.getItem("aboutYou") || "",
       buttonTitle: "Зберегти зміни",
       buttonskip: "Скасувати",
-      savedCount: 0,
       profilePhoto: localStorage.getItem("savedPhoto") || null,
     };
   },

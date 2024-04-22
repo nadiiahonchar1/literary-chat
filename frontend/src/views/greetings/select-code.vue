@@ -17,6 +17,7 @@
         </div>
         <div class="slide__code"  >
             <input 
+           
                 v-model="valueCode[0]"
                 type="tel"
                 maxlength = "1"
