@@ -11,6 +11,15 @@ body {
   margin: 0 auto;
   padding: 48px 16px 24px 16px;
 }
+.smmall-top-padding {
+  padding-top: 24px;
+}
+.container-header {
+  min-width: 320px;
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 14px 13px;
+}
 img {
   width: 100%;
 }
@@ -39,4 +48,8 @@ body {
   line-height: normal;
   margin: 0;
   padding: 0;
+}
+
+[v-cloak] {
+  display: none;
 }

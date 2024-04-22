@@ -1,28 +1,30 @@
 <template>
-  <div class="slide container" v-cloak>
-    <div class="content-container">
-      <div class="background-onbording background-onbording-third">
-        <img
-          class="boy-with-book"
-          src="@/assets/img/boy-with-book.svg"
-          alt="Хлопець захоплено читає книгу"
+  <Transition name="fade" appear>
+    <div class="slide container" v-cloak>
+      <div class="content-container">
+        <div class="background-onbording background-onbording-third">
+          <img
+            class="boy-with-book"
+            src="@/assets/img/boy-with-book.svg"
+            alt="Хлопець захоплено читає книгу"
+          />
+        </div>
+        <div class="slide__text">
+          <div class="slide__tittle h2">ОБМІНЮЙСЯ</div>
+          <div class="slide__description h3">прочитаними книгами</div>
+        </div>
+      </div>
+      <div class="btn-container">
+        <btn
+          :title="buttonTitle"
+          @click="nextpage"
+          @skip-all="skipall"
+          :skiptext="buttonskip"
         />
-      </div>
-      <div class="slide__text">
-        <div class="slide__tittle h2">ОБМІНЮЙСЯ</div>
-        <div class="slide__description h3">прочитаними книгами</div>
+        <page-indicator :totalPages="3" :currentPage="3"></page-indicator>
       </div>
     </div>
-    <div class="btn-container">
-      <btn
-        :title="buttonTitle"
-        @click="nextpage"
-        @skip-all="skipall"
-        :skiptext="buttonskip"
-      />
-      <page-indicator :totalPages="3" :currentPage="3"></page-indicator>
-    </div>
-  </div>
+  </Transition>
 </template>
 <script>
 import btn from "@/components/greetings/button-table.vue";

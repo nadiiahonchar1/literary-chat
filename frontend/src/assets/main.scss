@@ -5,11 +5,17 @@
 
 //component/greestings/button
 @import "@/components/greetings/button-style.scss";
+@import "@/components/UI/style/button-with-icon.scss";
+@import "@/components/UI/style/button-icon-text.scss";
+@import "@/components/UI/style/app-modal.scss";
+@import "@/components/UI/style/app-input.scss";
+@import "@/components/UI/style/app-area.scss";
 
 //pages
 @import "./pages/greetings/greetings.scss";
 @import "./pages/greetings/onbording.scss";
 @import "./pages/greetings/acquaintance.scss";
+@import "./pages/profiel.scss";
 
 //global style
 @import "./global/global.scss";

@@ -1,14 +1,13 @@
 <template>
-  <div class="form-control-input" :class="{ invalid: error }">
-    <label class="input-label" :for="id">{{ label }}</label>
-    <input
-      class="input"
-      :type="inptext"
+  <div class="form-control-area" :class="{ invalid: error }">
+    <label class="textarea-label" :for="id">{{ labelareaLabel }}</label>
+    <textarea
+      class="textarea"
       :id="id"
       :placeholder="placeholder"
       :value="modelValue"
       @input="change"
-    />
+    ></textarea>
     <small v-if="error">{{ error }}</small>
   </div>
 </template>
@@ -23,16 +22,12 @@ export default {
     placeholder: {
       type: String,
     },
-    label: {
+    labelareaLabel: {
       type: String,
     },
     error: {
       type: String,
     },
-    inptext:{
-      type: String,
-      default: 'text'
-    }
   },
   methods: {
     change(event) {

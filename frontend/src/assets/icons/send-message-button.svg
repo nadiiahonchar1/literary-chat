@@ -1,0 +1,12 @@
+<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Send message button">
+<path id="Vector" d="M25.6663 2.33334L17.4997 25.6667L12.833 15.1667L2.33301 10.5L25.6663 2.33334Z" fill="url(#paint0_linear_633_7281)" stroke="#6792C1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M25.6663 2.3335L12.833 15.1668" stroke="#6792C1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_633_7281" x1="13.9997" y1="2.33334" x2="13.9997" y2="25.6667" gradientUnits="userSpaceOnUse">
+<stop stop-color="#9DB9D7"/>
+<stop offset="1" stop-color="#5380B1"/>
+</linearGradient>
+</defs>
+</svg>

@@ -5,7 +5,6 @@ import slide2 from '@/views/greetings/slide-2.vue';
 import slide3 from '@/views/greetings/slide-3.vue';
 import slide4 from '@/views/greetings/slide-4.vue';
 import getAcquaintance from "@/views/greetings/getAcquaintance.vue";
-import registForm from '@/views/greetings/registFrom.vue';
 
 
 const routes = [
@@ -42,6 +41,11 @@ const routes = [
         path: "get-acquaintance",
         component: getAcquaintance,
         name: getAcquaintance,
+      },
+      {
+        path: "profiel",
+        component: emptyProfiel,
+        name: emptyProfiel,
       },
     ],
   },

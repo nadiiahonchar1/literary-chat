@@ -1,0 +1,39 @@
+.btnIconText {
+  display: flex;
+  position: relative;
+  gap: 16px;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  padding: 12px 0;
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: calc(100% + 36px);
+    height: 1px;
+    background-color: $disabled-button-color;
+    bottom: 0;
+    left: -16px;
+    z-index: -1;
+  }
+}
+
+.btnIconText__img {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.img-container {
+  border-radius: 50%;
+  background-color: $background-message-blue;
+  width: 32px;
+  height: 32px;
+  border: none;
+  padding: 6px;
+}

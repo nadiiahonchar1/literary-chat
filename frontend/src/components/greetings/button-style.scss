@@ -27,3 +27,7 @@
     line-height: 21px;
   }
 }
+
+.btn:disabled {
+  background-color: $disabled-button-color;
+}

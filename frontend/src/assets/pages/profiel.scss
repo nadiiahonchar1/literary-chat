@@ -1,0 +1,88 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid $accent-text-color;
+}
+
+.header h2 {
+  margin: 0;
+  flex: 1;
+  text-align: center;
+
+  font-weight: 600;
+  font-size: 20px;
+  color: $accent-text-color;
+  line-height: 47px;
+}
+
+.your-photo {
+  margin: 0 auto;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #9db9d7 0%, #5380b1 100%);
+  padding: 20px;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+
+.your-photo-icon {
+  width: 56px;
+  height: 56px;
+}
+
+.original-photo {
+  // width: 100%;
+  // height: auto;
+  background-size: cover;
+  transform: scale(1.7);
+}
+
+.your-nickname {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 47px;
+  color: $accent-text-color;
+  text-align: center;
+  margin-bottom: 3px;
+}
+
+.change-photo-button {
+  width: 100%;
+  text-align: center;
+  padding: 10px 16px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration-line: underline;
+  cursor: pointer;
+}
+
+.profiel-input {
+  margin-bottom: 5px;
+}
+
+.profiel-area {
+  margin-bottom: 16px;
+}
+
+.button-text-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.button-text-count {
+  font-family: $font2;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.saved-button {
+  margin-bottom: 8px;
+}
+
+.setting-button {
+  margin-bottom: 40px;
+}
