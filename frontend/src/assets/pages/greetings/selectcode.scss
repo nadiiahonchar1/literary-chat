@@ -1,0 +1,22 @@
+.slide{
+    &__code{
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        margin: 40px;
+    }
+    &__item{
+        border: 1px solid #d7d8d8;
+        border-radius: 16px;
+        width: 72px;
+        height: 72px;
+        font-family: $font2;
+        font-size: 24px;
+        line-height: 30px;
+        text-align: center;
+        outline: rgba(215, 216, 216, 1);
+    }
+    &__descript{
+        margin: 40px;
+    }
+}

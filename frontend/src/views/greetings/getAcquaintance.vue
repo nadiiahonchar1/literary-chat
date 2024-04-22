@@ -18,7 +18,7 @@
           <p class="acquaintance__caption">
             Додаткову інформацію ти завжди зможеш внести в особистому кабінеті.
           </p>
-          <form @submit.prevent="submitHandler">
+          <form>
             <app-input label="Нікнейм" v-model.trim="nikname"></app-input>
             <p class="acquaintance__explanation">
               Нікнейм може містити лише латинські літери і цифри.
@@ -28,19 +28,27 @@
                 :title="buttonTitle"
                 @skip-all="skipall"
                 :skiptext="buttonskip"
-                firstButtonType="submit"
                 :first-button-disabled="isNextDisabled"
+                @click="submitAlldata"
               />
             </div>
           </form>
         </div>
       </div>
+      <div class="prel" v-if="isLoaded">
+        <div class="slide__prell">
+          <preload></preload>
+        </div>
+      </div>
+      <div class="slide__prell" v-else></div>
     </div>
   </Transition>
 </template>
 <script>
+import axios from "axios";
 import AppInput from "@/components/UI/AppInput.vue";
 import btn from "@/components/greetings/button-table.vue";
+import preload from "@/components/greetings/preload/pre-load.vue";
 
 export default {
   data() {
@@ -48,26 +56,64 @@ export default {
       nikname: "",
       buttonTitle: "Зберегти та увійти в чат",
       buttonskip: "Скасувати",
+      isLoaded: false,
+      IsActive: false,
     };
   },
   components: {
     AppInput,
     btn,
+    preload,
+  },
+  computed: {
+    isNextDisabled() {
+      return !this.nikname;
+    },
   },
   methods: {
     skipall() {
       this.nikname = "";
     },
-    submitHandler() {
-      if (this.nikname) {
-        localStorage.setItem("nikname", `@${this.nikname}`);
-        this.$router.push("profiel");
-      }
+    submitAlldata() {
+      this.isLoaded = true;
+      this.IsActive = !this.IsActive;
+      const headers = {
+        "api-key": "6A38900C07D34C4F9839226B66FBEA24",
+        "Content-Type": "application/json",
+        "X-Requested-With": "XMLHttpRequest",
+      };
+      const body = {
+        username: this.nikname,
+        email: localStorage.getItem("newemail"),
+      };
+      console.log(body);
+      axios
+        .post(
+          "https://klabapi.azurewebsites.net/api/authentication/sign-up",
+          body,
+          { headers }
+        )
+        .then((response) => {
+          console.log(response.data);
+          this.isLoaded = false;
+          localStorage.setItem('nikname', `${this.nikname}`)
+          this.$router.push("registcode");
+        })
+        .catch((error) => {
+          console.error(error);
+          this.isLoaded = false;
+        });
     },
   },
-  computed: {
-    isNextDisabled() {
-      return !this.nikname;
+  watch: {
+    IsActive(value) {
+      if (value) {
+        document.querySelector(".slide").classList.add("active");
+        document.querySelector(".content-container").classList.add("load");
+      } else {
+        document.querySelector(".slide").classList.remove("active");
+        document.querySelector(".content-container").classList.remove("load");
+      }
     },
   },
 };

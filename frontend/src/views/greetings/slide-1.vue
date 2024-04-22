@@ -10,7 +10,7 @@ export default {
   mounted() {
     setTimeout(() => {
       this.$router.push("slide2");
-    }, 2000);
+    }, 3000);
   },
 };
 </script>

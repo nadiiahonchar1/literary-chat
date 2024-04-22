@@ -26,6 +26,11 @@
   height: 173px;
   margin-bottom: 115px;
 }
+.background-onbording-seven {
+  background: linear-gradient(180deg, #E6EEEE 0%, #B2D6D6 100%);
+  height: 173px;
+  margin-bottom: 49px;
+}
 
 .girl-one {
   position: absolute;
@@ -60,6 +65,14 @@
   width: 243px;
   height: 207px;
 }
+.boy-with-laptop{
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 137px;
+  height: 226px;
+}
 
 .gou-in-app {
   position: absolute;
@@ -87,6 +100,7 @@
 
 .content-container {
   flex: 1 1 auto;
+  position: relative;
 }
 .fade-enter-active,
 .fade-leave-active {

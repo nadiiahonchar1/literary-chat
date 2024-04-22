@@ -37,6 +37,26 @@ img {
   color: $subtittle;
   text-align: center;
 }
+.social-style{
+  font-weight: $textbtn;
+  font-size: 16px;
+  line-height: 19px;
+  color: $main-text-color;
+}
+.regsit-style{
+  font-weight: $weighttext;
+  font-size: 32px;
+  color: $titleSlide;
+  line-height: 37px;
+  text-align: center;
+}
+.regsit-descript{
+  font-weight: $subtext;
+  font-size: 18px;
+  color: $main-text-color;
+  line-height: 21px;
+  text-align: center;
+}
 body {
   color: var(--main-text-color);
   background: var(--background-color, $background-color);
@@ -49,7 +69,12 @@ body {
   margin: 0;
   padding: 0;
 }
-
+.active{
+  background: rgba(0, 0, 0, 0.5) no-repeat center center fixed;
+}
+.load{
+  z-index: -1;
+}
 [v-cloak] {
   display: none;
 }

@@ -118,6 +118,9 @@ export default {
       return !(this.name && this.aboutYou);
     },
   },
+  mounted() {
+    localStorage.clear()
+  }
 };
 </script>
 

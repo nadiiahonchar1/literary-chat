@@ -11,11 +11,14 @@
 @import "@/components/UI/style/app-input.scss";
 @import "@/components/UI/style/app-area.scss";
 
+
 //pages
 @import "./pages/greetings/greetings.scss";
 @import "./pages/greetings/onbording.scss";
 @import "./pages/greetings/acquaintance.scss";
 @import "./pages/profiel.scss";
+@import './pages/greetings/registform.scss';
+@import "./pages/greetings/selectcode.scss";
 
 //global style
 @import "./global/global.scss";
