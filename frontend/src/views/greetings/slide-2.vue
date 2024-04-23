@@ -50,7 +50,7 @@ export default {
       this.$router.push("slide3");
     },
     skipall() {
-      this.$router.push("#");
+      this.$router.push("regist-form");
     },
   },
 };

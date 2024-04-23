@@ -37,6 +37,7 @@ export default {
   data() {
     return {
       buttonTitle: "Почнемо!",
+      buttonskip: "",
     };
   },
   methods: {
@@ -44,7 +45,7 @@ export default {
       this.$router.push("regist-form");
     },
     skipall() {
-      this.$router.push("#");
+      this.$router.push("regist-form");
     },
   },
 };

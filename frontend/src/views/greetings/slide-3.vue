@@ -45,7 +45,7 @@ export default {
       this.$router.push("slide4");
     },
     skipall() {
-      this.$router.push("#");
+      this.$router.push("regist-form");
     },
   },
 };
