@@ -66,14 +66,54 @@ export default {
     btn,
     preload,
   },
-  computed: {
+   computed: {
     isNextDisabled() {
-      return !this.nikname;
+      if (!this.nikname) {
+        this.skipError();
+        return true;
+      } else {
+        if (!/^[a-zA-Z0-9]+$/.test(this.nikname)) {
+          this.setErrorMessage();
+          return true;
+        }
+      }
+      this.skipError();
+      return false;
+      // return !this.nikname;
+    },
+  },  
+  watch: {
+    IsActive(value) {
+      if (value) {
+        document.querySelector(".slide").classList.add("active");
+        document.querySelector(".content-container").classList.add("load");
+      } else {
+        document.querySelector(".slide").classList.remove("active");
+        document.querySelector(".content-container").classList.remove("load");
+      }
     },
   },
+  
   methods: {
     skipall() {
       this.nikname = "";
+    },
+    skipError() {
+      this.nicknameError = "";
+    },
+    niknameValidate() {
+      return /^[a-zA-Z0-9]+$/.test(this.nikname);
+    },
+    setErrorMessage() {
+      this.nicknameError = "Лише латинські літери і цифри.";
+    },
+    submitHandler() {
+      if (this.niknameValidate()) {
+        localStorage.setItem("nikname", `@${this.nikname}`);
+        this.$router.push("profiel");
+      } else {
+        this.setErrorMessage();
+      }
     },
     submitAlldata() {
       this.isLoaded = true;
@@ -104,55 +144,6 @@ export default {
           console.error(error);
           this.isLoaded = false;
         });
-    },
-  },
-  watch: {
-    IsActive(value) {
-      if (value) {
-        document.querySelector(".slide").classList.add("active");
-        document.querySelector(".content-container").classList.add("load");
-      } else {
-        document.querySelector(".slide").classList.remove("active");
-        document.querySelector(".content-container").classList.remove("load");
-      }
-    },
-  },
-  computed: {
-    isNextDisabled() {
-      if (!this.nikname) {
-        this.skipError();
-        return true;
-      } else {
-        if (!/^[a-zA-Z0-9]+$/.test(this.nikname)) {
-          this.setErrorMessage();
-          return true;
-        }
-      }
-      this.skipError();
-      return false;
-      // return !this.nikname;
-    },
-  },
-  methods: {
-    skipall() {
-      this.nikname = "";
-    },
-    skipError() {
-      this.nicknameError = "";
-    },
-    niknameValidate() {
-      return /^[a-zA-Z0-9]+$/.test(this.nikname);
-    },
-    setErrorMessage() {
-      this.nicknameError = "Лише латинські літери і цифри.";
-    },
-    submitHandler() {
-      if (this.niknameValidate()) {
-        localStorage.setItem("nikname", `@${this.nikname}`);
-        this.$router.push("profiel");
-      } else {
-        this.setErrorMessage();
-      }
     },
   },
 };
