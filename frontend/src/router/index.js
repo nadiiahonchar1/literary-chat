@@ -57,7 +57,8 @@ const routes = [
         path: 'registcode',
         component: regesit,
         name:regesit,
-
+      },
+      {
         path: "main",
         component: MainPage,
         name: MainPage,
