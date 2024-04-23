@@ -8,7 +8,7 @@ import getAcquaintance from "@/views/greetings/getAcquaintance.vue";
 import registFrom from '@/views/greetings/registFrom.vue';
 import emptyProfiel from '@/views/emptyProfiel.vue'
 import regesit from '@/views/greetings/select-code.vue'
-import emptyProfiel from "@/views/emptyProfiel.vue";
+
 import MainPage from '@/views/mainPage.vue';
 import ChatPage from '@/views/chatPage.vue';
 
