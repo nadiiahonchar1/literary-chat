@@ -5,15 +5,12 @@ import slide2 from '@/views/greetings/slide-2.vue';
 import slide3 from '@/views/greetings/slide-3.vue';
 import slide4 from '@/views/greetings/slide-4.vue';
 import getAcquaintance from "@/views/greetings/getAcquaintance.vue";
-<<<<<<< HEAD
 import registFrom from '@/views/greetings/registFrom.vue';
 import emptyProfiel from '@/views/emptyProfiel.vue'
 import regesit from '@/views/greetings/select-code.vue'
-=======
 import emptyProfiel from "@/views/emptyProfiel.vue";
 import MainPage from '@/views/mainPage.vue';
 import ChatPage from '@/views/chatPage.vue';
->>>>>>> b8d0cc22a883346cde5305ed17219c4ab7812e4a
 
 
 const routes = [
@@ -57,12 +54,10 @@ const routes = [
         name: emptyProfiel,
       },
       {
-<<<<<<< HEAD
         path: 'registcode',
         component: regesit,
         name:regesit,
 
-=======
         path: "main",
         component: MainPage,
         name: MainPage,
@@ -71,7 +66,6 @@ const routes = [
         path: "/:chatName", 
         component: ChatPage,
         name: "ChatPage",
->>>>>>> b8d0cc22a883346cde5305ed17219c4ab7812e4a
       },
     ],
   },
