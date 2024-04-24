@@ -118,62 +118,36 @@ export default {
     save() {
       this.isLoaded = true;
       this.IsActive = !this.IsActive;
-      const email = this.getkeyLocalstore(["newemail"]);
-      const сurrentemail = this.getkeyLocalstore(["сurrentemail"]);
+      const email = this.getkeyLocalstore(["useremail"]);
       const verificationCode = this.valueCode.join("");
       const headers = {
-        "api-key": "6A38900C07D34C4F9839226B66FBEA24",
+        "api-key": process.env.VUE_APP_API_KEY,
         "Content-Type": "application/json",
         "X-Requested-With": "XMLHttpRequest",
       };
 
-      if (сurrentemail == null) {
-        const data = {
-          email: email,
-          verificationCode: verificationCode,
-        };
-        axios
-          .post(
-            "https://klabapi.azurewebsites.net/api/authentication/verify-email",
-            data,
-            { headers }
-          )
-          .then((response) => {
-            console.log(response.data);
-            this.$router.push("profiel");
+      const data = {
+        email: email,
+        verificationCode: verificationCode,
+      };
+      axios
+        .post(
+          `${process.env.VUE_APP_API_BASE_URL}api/authentication/verify-email`,
+          data,
+          { headers }
+        )
+        .then((response) => {
+          if (response) {
+            this.$router.push("main");
             this.isLoaded = false;
-          })
-          .catch(() => {
-            // console.error(error);
-            // console.error(error.response.data)
-            this.erorr = true;
-            this.isLoaded = false;
-            this.IsActive = false;
-            this.showError = true;
-          });
-      } else {
-        const data = {
-          email: сurrentemail,
-          authenticationCode: verificationCode,
-        };
-        axios
-          .post(
-            "https://klabapi.azurewebsites.net/api/authentication/authenticate-email",
-            data,
-            { headers }
-          )
-          .then((response) => {
-            this.$router.push("profiel");
-            console.log(response.data);
-            this.isLoaded = false;
-          })
-          .catch(() => {
-            this.erorr = true;
-            this.isLoaded = false;
-            this.IsActive = false;
-            this.showError = true;
-          });
-      }
+          }
+        })
+        .catch(() => {
+          this.erorr = true;
+          this.isLoaded = false;
+          this.IsActive = false;
+          this.showError = true;
+        });
     },
   },
   watch: {

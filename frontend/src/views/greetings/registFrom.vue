@@ -89,7 +89,7 @@ export default {
       this.isLoaded = true;
       this.IsActive = !this.IsActive;
       const headers = {
-        "api-key": "6A38900C07D34C4F9839226B66FBEA24",
+        "api-key": process.env.VUE_APP_API_KEY,
         "Content-Type": "application/json",
         "X-Requested-With": "XMLHttpRequest",
       };
@@ -98,23 +98,29 @@ export default {
       };
       axios
         .post(
-          "https://klabapi.azurewebsites.net/api/authentication/sign-in",
+          `${process.env.VUE_APP_API_BASE_URL}api/authentication/sign-in`,
           body,
           { headers }
         )
-        .then(() => {
-          localStorage.setItem('сurrentemail', `${this.email}`)
-          this.$router.push("registcode");
+        .then((response) => {
+          if (response.status === 200) {
+            localStorage.setItem("useremail", `${this.email}`);
+            this.$router.push("registcode");
+          } else {
+            console.error("Unexpected response status:", response.status);
+          }
           this.isLoaded = false;
         })
         .catch((error) => {
-          localStorage.setItem('newemail', `${this.email}`)
-          this.$router.push("get-acquaintance");
-          this.isLoaded = false;
           console.error(error);
+
+          localStorage.setItem("useremail", `${this.email}`);
+          this.$router.push("get-acquaintance");
+
+          this.isLoaded = false;
         });
     },
-},
+  },
   watch: {
     IsActive(value) {
       if (value) {
