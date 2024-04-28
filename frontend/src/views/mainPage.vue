@@ -25,6 +25,7 @@
 import chatsList from "@/chat-list.json";
 import ButtonWithIcon from "@/components/UI/ButtonWithIcon.vue";
 import ChatLink from "@/components/UI/ChatLink.vue";
+import axios from "axios";
 
 export default {
   components: {
@@ -49,7 +50,35 @@ export default {
       return this.chats.find((chat) => chat.id === 1);
     },
   },
+  methods: {
+    async getUser() {
+      /*const axiosInstance = axios.create({
+        maxRedirects: 0,
+      });
+      console.log("axiosInstance", axiosInstance.defaults);*/
+
+      try {
+        //const response = await axiosInstance.get(
+        const response = await axios.get(
+          `${process.env.VUE_APP_API_BASE_URL}api/users/me`,
+          {
+            headers: {
+              "api-key": process.env.VUE_APP_API_KEY,
+              Accept: "*/*",
+              "Content-Type": "application/json",
+              "Postman-Token": "8c22fb14-40d9-48d3-a69a-7863e5cc4923",
+              "X-Requested-With": "XMLHttpRequest",
+            },
+          }
+        );
+        console.log("Про мене", response);
+      } catch (error) {
+        console.error("Я в мі", error);
+      }
+    },
+  },
+  mounted() {
+    this.getUser();
+  },
 };
 </script>
-
-<style lang="scss"></style>
