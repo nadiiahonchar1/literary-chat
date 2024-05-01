@@ -48,11 +48,12 @@
     color: $disabled-text-color;
   }
   &__explanation {
-    margin: 0 31px 29px 31px;
+    margin: 0 auto 29px auto;
+    min-width: 358px;
+    width: 66%;
     font-weight: 400;
     font-size: 10px;
     color: $disabled-text-color;
     text-align: left;
   }
 }
-

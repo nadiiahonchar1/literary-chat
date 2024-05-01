@@ -3,10 +3,16 @@
 @import "@/assets/varibles/_fonts";
 // style for first-btn
 .btn {
-  width: $widthbtn;
+  // width: $widthbtn;
+  display: block;
+  min-width: 358px;
+  width: 66%;
+
   background-color: $slidebtn;
   border-radius: $borderradius;
   margin: 0 0 7px 0;
+  margin-left: auto;
+  margin-right: auto;
   &__title {
     padding: 17.5px 0 17.5px 0;
     color: $textcolor;
@@ -22,7 +28,13 @@
 }
 // style for second-btn
 .skip {
-  width: $widthbtn;
+  // width: $widthbtn;
+  display: block;
+  min-width: 358px;
+  width: 66%;
+  margin-left: auto;
+  margin-right: auto;
+
   background-color: $backgroundcolor;
   &__text {
     padding: 17.5px 0 17.5px 0;

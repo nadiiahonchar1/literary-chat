@@ -37,20 +37,20 @@ img {
   color: $subtittle;
   text-align: center;
 }
-.social-style{
+.social-style {
   font-weight: $textbtn;
   font-size: 16px;
   line-height: 19px;
   color: $main-text-color;
 }
-.regsit-style{
+.regsit-style {
   font-weight: $weighttext;
   font-size: 32px;
   color: $titleSlide;
   line-height: 37px;
   text-align: center;
 }
-.regsit-descript{
+.regsit-descript {
   font-weight: $subtext;
   font-size: 18px;
   color: $main-text-color;
@@ -69,12 +69,16 @@ body {
   margin: 0;
   padding: 0;
 }
-.active{
+.active {
   background: rgba(0, 0, 0, 0.5) no-repeat center center fixed;
 }
-.load{
+.load {
   z-index: -1;
 }
 [v-cloak] {
   display: none;
+}
+
+#app {
+  height: 100%;
 }

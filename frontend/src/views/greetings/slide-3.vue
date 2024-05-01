@@ -1,5 +1,5 @@
 <template>
-  <Transition name="fade" appear>
+  <Transition name="onbording" appear>
     <div class="slide container" v-cloak>
       <div class="content-container">
         <div class="background-onbording background-onbording-second">

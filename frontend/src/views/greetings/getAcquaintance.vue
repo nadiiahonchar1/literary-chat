@@ -15,9 +15,9 @@
             Придумай унікальний нікнейм, <br />
             за яким тебе можуть знайти однодумці.
           </h3>
-          <p class="acquaintance__caption">
+          <!-- <p class="acquaintance__caption">
             Додаткову інформацію ти завжди зможеш внести в особистому кабінеті.
-          </p>
+          </p> -->
           <form @submit.prevent="submitAlldata">
             <app-input
               label="Нікнейм"
