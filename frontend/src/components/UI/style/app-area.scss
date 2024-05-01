@@ -15,14 +15,18 @@
   &:hover,
   &:focus,
   &:active {
-    border: 1px solid #84bf4e;
+    border: 1px solid $disabled-text-color;
     outline: none;
   }
 }
 
 .form-control-area {
   position: relative;
-  width: 100%;
+  // width: 100%;
+  min-width: 358px;
+  width: 66%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .form-control-area label {
