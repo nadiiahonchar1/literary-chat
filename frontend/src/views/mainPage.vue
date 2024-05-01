@@ -27,6 +27,8 @@ import ButtonWithIcon from "@/components/UI/ButtonWithIcon.vue";
 import ChatLink from "@/components/UI/ChatLink.vue";
 import axios from "axios";
 
+axios.defaults.withCredentials = true;
+
 export default {
   components: {
     ButtonWithIcon,

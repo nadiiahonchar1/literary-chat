@@ -57,6 +57,7 @@ import axios from "axios";
 import AppInput from "@/components/UI/AppInput.vue";
 import btn from "@/components/greetings/button-table.vue";
 import preload from "@/components/greetings/preload/pre-load.vue";
+axios.defaults.withCredentials = true;
 
 export default {
   data() {

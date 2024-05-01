@@ -65,6 +65,8 @@ import btn from "@/components/greetings/button-table.vue";
 import preload from "@/components/greetings/preload/pre-load.vue";
 import axios from "axios";
 
+axios.defaults.withCredentials = true;
+
 export default {
   data() {
     return {
