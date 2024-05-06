@@ -25,9 +25,11 @@
 import chatsList from "@/chat-list.json";
 import ButtonWithIcon from "@/components/UI/ButtonWithIcon.vue";
 import ChatLink from "@/components/UI/ChatLink.vue";
-import axios from "axios";
+import { getUser } from "@/api/getUser";
+import { useUserStore } from "@/stores/UserStore";
+// import axios from "axios";
 
-axios.defaults.withCredentials = true;
+// axios.defaults.withCredentials = true;
 
 export default {
   components: {
@@ -53,34 +55,18 @@ export default {
     },
   },
   methods: {
-    async getUser() {
-      /*const axiosInstance = axios.create({
-        maxRedirects: 0,
-      });
-      console.log("axiosInstance", axiosInstance.defaults);*/
-
+    async getUserData() {
       try {
-        //const response = await axiosInstance.get(
-        const response = await axios.get(
-          `${process.env.VUE_APP_API_BASE_URL}api/users/me`,
-          {
-            headers: {
-              "api-key": process.env.VUE_APP_API_KEY,
-              Accept: "*/*",
-              "Content-Type": "application/json",
-              "Postman-Token": "8c22fb14-40d9-48d3-a69a-7863e5cc4923",
-              "X-Requested-With": "XMLHttpRequest",
-            },
-          }
-        );
-        console.log("Про мене", response);
+        const response = await getUser();
+        console.log("main responce", response.data);
+        useUserStore().setId(response.data.id);
       } catch (error) {
-        console.error("Я в мі", error);
+        console.error(error);
       }
     },
   },
   mounted() {
-    this.getUser();
+    this.getUserData();
   },
 };
 </script>

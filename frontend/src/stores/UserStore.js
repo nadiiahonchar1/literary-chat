@@ -22,5 +22,8 @@ export const useUserStore = defineStore("userStore", {
     setNikname(newValue) {
       this.nikname = newValue;
     },
+    setId(newId) {
+      this.userId = newId;
+    }
   },
 });
