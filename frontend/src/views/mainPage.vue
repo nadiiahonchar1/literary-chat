@@ -58,7 +58,6 @@ export default {
     async getUserData() {
       try {
         const response = await getUser();
-        console.log("main responce", response.data);
         useUserStore().setId(response.data.id);
       } catch (error) {
         console.error(error);
