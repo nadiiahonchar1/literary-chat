@@ -15,10 +15,7 @@
             Придумай унікальний нікнейм, <br />
             за яким тебе можуть знайти однодумці.
           </h3>
-          <!-- <p class="acquaintance__caption">
-            Додаткову інформацію ти завжди зможеш внести в особистому кабінеті.
-          </p> -->
-          <form @submit.prevent="submitAlldata">
+          <form @submit.prevent="submitAllData">
             <app-input
               label="Нікнейм"
               v-model.trim="nikname"
@@ -53,11 +50,11 @@
 </template>
 
 <script>
-import axios from "axios";
 import AppInput from "@/components/UI/AppInput.vue";
 import btn from "@/components/greetings/button-table.vue";
 import preload from "@/components/greetings/preload/pre-load.vue";
-axios.defaults.withCredentials = true;
+import { submitAllData } from "@/api/signUp";
+import { useUserStore } from "@/stores/UserStore";
 
 export default {
   data() {
@@ -114,31 +111,18 @@ export default {
     setErrorMessage() {
       this.nicknameError = "Лише латинські літери і цифри.";
     },
-    submitAlldata() {
-      const headers = {
-        "api-key": process.env.VUE_APP_API_KEY,
-        "Content-Type": "application/json",
-        "X-Requested-With": "XMLHttpRequest",
-      };
-      const body = {
-        username: this.nikname,
-        email: localStorage.getItem("useremail"),
-      };
-      axios
-        .post(
-          `${process.env.VUE_APP_API_BASE_URL}api/authentication/sign-up`,
-          body,
-          { headers }
-        )
-        .then((response) => {
-          if (response) {
-            this.isLoaded = false;
-            this.$router.push("registcode");
-          }
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+    async submitAllData() {
+      useUserStore().setNikname(this.nikname);
+      console.log("useUserStore().nikname", useUserStore().nikname);
+      try {
+        const response = await submitAllData(this.nikname);
+        if (response.success) {
+          this.isLoaded = false;
+          this.$router.push("registcode");
+        }
+      } catch (error) {
+        console.error(error);
+      }
     },
   },
 };

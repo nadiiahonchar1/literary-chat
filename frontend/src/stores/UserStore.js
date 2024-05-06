@@ -1,21 +1,26 @@
 import { defineStore } from "pinia";
-import axios from "axios";
 
-// export const useUserStore = defineStore("UserStore", {
-//   state: () => ({
-//     userEmail: "",
-//     userNikname: "",
-//     userName: "",
-//     userPhoto: "",
-//     aboutUser: "",
-//     userId: null,
-//   }),
-//   getters: {
-//     loggedIn: (state) => state.userId !== null,
-//   },
-//   actions: {
-//     clearUser() {
-//       this.$reset();
-//     },
-//   },
-// });
+export const useUserStore = defineStore("userStore", {
+  state: () => ({
+    useremail: "",
+    nikname: "",
+    userName: "",
+    userPhoto: "",
+    aboutUser: "",
+    userId: null,
+  }),
+  getters: {
+    loggedIn: (state) => state.userId !== null,
+  },
+  actions: {
+    clearUser() {
+      this.$reset();
+    },
+    clearNikname() {
+      this.nikname = "";
+    },
+    setNikname(newValue) {
+      this.nikname = newValue;
+    },
+  },
+});
