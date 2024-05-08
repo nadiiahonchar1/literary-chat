@@ -63,9 +63,8 @@
 import AppInput from "@/components/UI/AppInput.vue";
 import btn from "@/components/greetings/button-table.vue";
 import preload from "@/components/greetings/preload/pre-load.vue";
-import axios from "axios";
-
-axios.defaults.withCredentials = true;
+import { signIn } from "@/api/signIn";
+import { useUserStore } from "@/stores/UserStore";
 
 export default {
   data() {
@@ -87,40 +86,23 @@ export default {
     },
   },
   methods: {
-    requestemail() {
+    async requestemail() {
       this.isLoaded = true;
       this.IsActive = !this.IsActive;
-      const headers = {
-        "api-key": process.env.VUE_APP_API_KEY,
-        "Content-Type": "application/json",
-        "X-Requested-With": "XMLHttpRequest",
-      };
-      const body = {
-        email: this.email,
-      };
-      axios
-        .post(
-          `${process.env.VUE_APP_API_BASE_URL}api/authentication/sign-in`,
-          body,
-          { headers }
-        )
-        .then((response) => {
-          if (response.status === 200) {
-            localStorage.setItem("useremail", `${this.email}`);
-            this.$router.push("registcode");
-          } else {
-            console.error("Unexpected response status:", response.status);
-          }
-          this.isLoaded = false;
-        })
-        .catch((error) => {
-          console.error(error);
-
-          localStorage.setItem("useremail", `${this.email}`);
-          this.$router.push("get-acquaintance");
-
-          this.isLoaded = false;
-        });
+      try {
+        const response = await signIn(this.email);
+        if (response.success) {
+          this.$router.push("registcode");
+        } else {
+          throw new Error("Unexpected response status");
+        }
+      } catch (error) {
+        console.error("Error", error);
+        this.$router.push("get-acquaintance");
+      } finally {
+        useUserStore().setEmail(this.email);
+        this.isLoaded = false;
+      }
     },
   },
   watch: {

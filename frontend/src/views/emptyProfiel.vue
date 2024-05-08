@@ -40,15 +40,6 @@
             labelareaLabel="Розкажи трішки більше про себе"
             v-model.trim="aboutYou"
           ></app-area>
-          <!-- <button-icon-text class="saved-button" iconName="saved.svg">
-            <div class="button-text-container">
-              <span>Збережене</span>
-              <span class="button-text-count">{{ savedCount }}</span>
-            </div>
-          </button-icon-text> -->
-          <!-- <button-icon-text class="setting-button" iconName="settings.svg"
-            >Налаштування
-          </button-icon-text> -->
           <div class="btn-container">
             <btn
               :title="buttonTitle"
@@ -70,7 +61,6 @@ import AppModal from "@/components/UI/Modal/AppModal.vue";
 import AppInput from "@/components/UI/AppInput.vue";
 import AppArea from "@/components/UI/AppArea.vue";
 import btn from "@/components/greetings/button-table.vue";
-// import ButtonIconText from "@/components/UI/ButtonIconText.vue";
 
 export default {
   components: {
@@ -117,8 +107,8 @@ export default {
     },
   },
   mounted() {
-    localStorage.clear()
-  }
+    localStorage.clear();
+  },
 };
 </script>
 

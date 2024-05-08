@@ -113,9 +113,11 @@ export default {
     },
     async submitAllData() {
       useUserStore().setNikname(this.nikname);
-      console.log("useUserStore().nikname", useUserStore().nikname);
       try {
-        const response = await submitAllData(this.nikname);
+        const response = await submitAllData(
+          this.nikname,
+          useUserStore().email
+        );
         if (response.success) {
           this.isLoaded = false;
           this.$router.push("registcode");

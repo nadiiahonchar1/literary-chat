@@ -24,6 +24,9 @@ export const useUserStore = defineStore("userStore", {
     },
     setId(newId) {
       this.id = newId;
-    }
+    },
+    setEmail(newEmail) {
+      this.email = newEmail;
+    },
   },
 });

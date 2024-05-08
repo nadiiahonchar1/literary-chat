@@ -9,6 +9,7 @@
 <script>
 import ModalBackdrop from "./ModalBackdrop.vue";
 import ModalContent from "./ModalContentChoosePhoto.vue";
+import { addPhoto } from "@/api/addPhoto";
 
 export default {
   components: {
@@ -22,9 +23,14 @@ export default {
     close() {
       this.$emit("close");
     },
-    handleImageSelected(imageData) {
+    async handleImageSelected(imageData) {
       localStorage.setItem("savedPhoto", imageData);
-      this.img = imageData;
+      try {
+        const response = await addPhoto(imageData);
+        console.log(response);
+      } catch (error) {
+        console.error(error);
+      }
       this.$emit("imageSelected", imageData);
       this.close();
     },

@@ -2,20 +2,20 @@ import axios from "axios";
 
 axios.defaults.withCredentials = true;
 
-export async function submitAllData(username, email) {
-  // const useremail = localStorage.getItem("useremail");
+export async function submitAllData(nikname) {
+  const useremail = localStorage.getItem("useremail");
   const headers = {
     "api-key": process.env.VUE_APP_API_KEY,
     "Content-Type": "application/json",
     "X-Requested-With": "XMLHttpRequest",
   };
   const body = {
-    username,
-    email,
+    username: nikname,
+    email: useremail,
   };
   try {
-    const response = await axios.post(
-      `${process.env.VUE_APP_API_BASE_URL}api/authentication/sign-up`,
+    const response = await axios.patch(
+      `${process.env.VUE_APP_API_BASE_URL}api/users/me`,
       body,
       { headers }
     );
