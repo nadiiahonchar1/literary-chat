@@ -2,19 +2,20 @@ import axios from "axios";
 
 axios.defaults.withCredentials = true;
 
-export async function signIn(email) {
+export async function getVerify(email, verificationCode) {
   const headers = {
     "api-key": process.env.VUE_APP_API_KEY,
     "Content-Type": "application/json",
     "X-Requested-With": "XMLHttpRequest",
   };
-  const body = {
+  const data = {
     email,
+    verificationCode,
   };
   try {
     const response = await axios.post(
-      `${process.env.VUE_APP_API_BASE_URL}api/authentication/sign-in`,
-      body,
+      `${process.env.VUE_APP_API_BASE_URL}api/authentication/verify-email`,
+      data,
       { headers }
     );
     return { success: true, data: response.data };

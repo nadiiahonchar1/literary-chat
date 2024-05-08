@@ -3,7 +3,6 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 
 export async function submitAllData(username, email) {
-  // const useremail = localStorage.getItem("useremail");
   const headers = {
     "api-key": process.env.VUE_APP_API_KEY,
     "Content-Type": "application/json",
