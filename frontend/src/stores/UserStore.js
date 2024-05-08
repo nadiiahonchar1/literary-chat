@@ -10,7 +10,7 @@ export const useUserStore = defineStore("userStore", {
     id: null,
   }),
   getters: {
-    loggedIn: (state) => state.id !== null,
+    // loggedIn: (state) => state.id !== null,
   },
   actions: {
     clearUser() {
@@ -22,11 +22,17 @@ export const useUserStore = defineStore("userStore", {
     setNikname(newValue) {
       this.nikname = newValue;
     },
+    setName(newValue) {
+      this.name = newValue;
+    },
     setId(newId) {
       this.id = newId;
     },
     setEmail(newEmail) {
       this.email = newEmail;
+    },
+    setDescription(newValue) {
+      this.description = newValue;
     },
   },
 });

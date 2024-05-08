@@ -77,9 +77,6 @@ import btn from "@/components/greetings/button-table.vue";
 import preload from "@/components/greetings/preload/pre-load.vue";
 import { getVerify } from "@/api/getVerify";
 import { useUserStore } from "@/stores/UserStore";
-// import axios from "axios";
-
-// axios.defaults.withCredentials = true;
 
 export default {
   data() {
@@ -122,40 +119,11 @@ export default {
     async save() {
       this.isLoaded = true;
       this.IsActive = !this.IsActive;
-      // const email = this.getkeyLocalstore(["useremail"]);
       const verificationCode = this.valueCode.join("");
-      // const headers = {
-      //   "api-key": process.env.VUE_APP_API_KEY,
-      //   "Content-Type": "application/json",
-      //   "X-Requested-With": "XMLHttpRequest",
-      // };
-
-      // const data = {
-      //   email: useUserStore().email,
-      //   verificationCode: verificationCode,
-      // };
-      // axios
-      //   .post(
-      //     `${process.env.VUE_APP_API_BASE_URL}api/authentication/verify-email`,
-      //     data,
-      //     { headers }
-      //   )
-      //   .then((response) => {
-      //     if (response) {
-      //       this.$router.push("main");
-      //       this.isLoaded = false;
-      //     }
-      //   })
-      //   .catch(() => {
-      //     this.erorr = true;
-      //     this.isLoaded = false;
-      //     this.IsActive = false;
-      //     this.showError = true;
-      //   });
       try {
         await getVerify(useUserStore().email, verificationCode);
 
-        this.$router.push("main");
+        this.$router.push("profiel");
         this.isLoaded = false;
       } catch (error) {
         console.error(error);

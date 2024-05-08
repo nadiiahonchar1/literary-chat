@@ -61,6 +61,8 @@ import AppModal from "@/components/UI/Modal/AppModal.vue";
 import AppInput from "@/components/UI/AppInput.vue";
 import AppArea from "@/components/UI/AppArea.vue";
 import btn from "@/components/greetings/button-table.vue";
+import { addDescription } from "@/api/addDescription";
+import { useUserStore } from "@/stores/UserStore";
 
 export default {
   components: {
@@ -73,18 +75,19 @@ export default {
   data() {
     return {
       backIcon: "@/assets/icons/back-arrow.svg",
-      yourNickname: localStorage.getItem("nikname") || "@yourNickname",
+      yourNickname: useUserStore().nikname || "@yourNickname",
       modal: false,
-      name: localStorage.getItem("name") || "",
-      aboutYou: localStorage.getItem("aboutYou") || "",
+      name: useUserStore().name || "",
+      aboutYou: useUserStore().description || "",
       buttonTitle: "Зберегти зміни",
       buttonskip: "Скасувати",
-      profilePhoto: localStorage.getItem("savedPhoto") || null,
+      profilePhoto: useUserStore().photo || null,
     };
   },
   methods: {
     goBack() {
-      window.history.back();
+      // window.history.back();
+      this.$router.push("main");
     },
     skipall() {
       this.name = "";
@@ -92,12 +95,19 @@ export default {
     },
     handleModalClose() {
       this.modal = false;
-      this.profilePhoto = localStorage.getItem("savedPhoto") || null;
+      this.profilePhoto = useUserStore().photo || null;
     },
-    submitHandler() {
+    async submitHandler() {
       if (this.name && this.aboutYou) {
-        localStorage.setItem("name", this.name);
-        localStorage.setItem("aboutYou", this.aboutYou);
+        // localStorage.setItem("name", this.name);
+        // localStorage.setItem("aboutYou", this.aboutYou);
+        useUserStore().setNikname(this.name);
+        useUserStore().setDescription(this.aboutYou);
+        try {
+          await addDescription(this.name, this.aboutYou);
+        } catch (erorr) {
+          console.error(erorr);
+        }
       }
     },
   },

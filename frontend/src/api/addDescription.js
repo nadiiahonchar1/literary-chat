@@ -2,16 +2,15 @@ import axios from "axios";
 
 axios.defaults.withCredentials = true;
 
-export async function submitAllData(nikname) {
-  const useremail = localStorage.getItem("useremail");
+export async function addDescription(nickname, description) {
   const headers = {
     "api-key": process.env.VUE_APP_API_KEY,
     "Content-Type": "application/json",
     "X-Requested-With": "XMLHttpRequest",
   };
   const body = {
-    username: nikname,
-    email: useremail,
+    nickname,
+    description,
   };
   try {
     const response = await axios.patch(
