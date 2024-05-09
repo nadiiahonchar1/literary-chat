@@ -1,20 +1,21 @@
 import axios from "axios";
+import { dataURLToBinary } from "@/utils/dataURLToBinary";
 
 axios.defaults.withCredentials = true;
 
-export async function addPhoto(photo) {
+export async function addPhoto(dataURL) {
   const headers = {
     "api-key": process.env.VUE_APP_API_KEY,
-    "Content-Type": "application/json",
+    "Content-Type": "multipart/form-data",
     "X-Requested-With": "XMLHttpRequest",
   };
 
-  try {
-    // Створюємо FormData та додаємо фото
-    const formData = new FormData();
-    formData.append("photo", photo);
+  const formData = new FormData();
+  const blob = dataURLToBinary(dataURL);
 
-    // Відправляємо запит з використанням axios
+  formData.append("image", blob, "image.png");
+
+  try {
     const response = await axios.post(
       `${process.env.VUE_APP_API_BASE_URL}api/users/me/image`,
       formData,

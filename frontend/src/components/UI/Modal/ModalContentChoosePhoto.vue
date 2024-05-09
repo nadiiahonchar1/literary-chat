@@ -32,6 +32,8 @@
 
 <script>
 import CameraPreview from "./CameraPreview.vue";
+import { addPhoto } from "@/api/addPhoto";
+import { useUserStore } from "@/stores/UserStore";
 
 export default {
   data() {
@@ -52,7 +54,7 @@ export default {
         const file = e.target.files[0];
         const reader = new FileReader();
         reader.onload = (event) => {
-          localStorage.setItem("savedPhoto", event.target.result);
+          useUserStore().setPhoto(event.target.result);
           this.$emit("imageSelected", event.target.result);
           this.img = event.target.result;
           this.$emit("close");
@@ -77,14 +79,21 @@ export default {
         this.$emit("close");
       }
     },
-    handleImageSelected(imageData) {
-      localStorage.setItem("savedPhoto", imageData);
+    async handleImageSelected(imageData) {
+      useUserStore().setPhoto(imageData);
+
       this.img = imageData;
       this.$emit("imageSelected", imageData);
       this.cameraStream.getTracks().forEach((track) => track.stop());
+      try {
+        await addPhoto(useUserStore().photo);
+        console.log("Image successfully saved");
+      } catch (error) {
+        console.error("Error saving image:", error);
+      }
       this.close();
     },
-    close() {
+    async close() {
       this.showCameraPreview = false;
       this.$emit("close");
     },

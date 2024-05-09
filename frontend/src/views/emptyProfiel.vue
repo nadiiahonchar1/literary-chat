@@ -62,6 +62,7 @@ import AppInput from "@/components/UI/AppInput.vue";
 import AppArea from "@/components/UI/AppArea.vue";
 import btn from "@/components/greetings/button-table.vue";
 import { addDescription } from "@/api/addDescription";
+import { getUser } from "@/api/getUser";
 import { useUserStore } from "@/stores/UserStore";
 
 export default {
@@ -99,15 +100,22 @@ export default {
     },
     async submitHandler() {
       if (this.name && this.aboutYou) {
-        // localStorage.setItem("name", this.name);
-        // localStorage.setItem("aboutYou", this.aboutYou);
-        useUserStore().setNikname(this.name);
+        useUserStore().setName(this.name);
         useUserStore().setDescription(this.aboutYou);
         try {
           await addDescription(this.name, this.aboutYou);
         } catch (erorr) {
           console.error(erorr);
         }
+      }
+    },
+    async getUserData() {
+      try {
+        const response = await getUser();
+        useUserStore().setId(response.data.id);
+        useUserStore().setNikname(response.data.username);
+      } catch (error) {
+        console.error(error);
       }
     },
   },
@@ -117,7 +125,7 @@ export default {
     },
   },
   mounted() {
-    localStorage.clear();
+    this.getUserData();
   },
 };
 </script>

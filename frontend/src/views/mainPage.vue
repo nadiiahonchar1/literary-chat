@@ -1,7 +1,7 @@
 <template>
   <div class="chat-list">
     <header class="container-header header">
-      <button-with-icon iconName="list.svg" />
+      <button-with-icon iconName="list.svg" @click="goProfiel" />
       <h2>Кімнати</h2>
       <button-with-icon iconName="search.svg" />
     </header>
@@ -25,11 +25,6 @@
 import chatsList from "@/chat-list.json";
 import ButtonWithIcon from "@/components/UI/ButtonWithIcon.vue";
 import ChatLink from "@/components/UI/ChatLink.vue";
-import { getUser } from "@/api/getUser";
-import { useUserStore } from "@/stores/UserStore";
-// import axios from "axios";
-
-// axios.defaults.withCredentials = true;
 
 export default {
   components: {
@@ -55,17 +50,10 @@ export default {
     },
   },
   methods: {
-    async getUserData() {
-      try {
-        const response = await getUser();
-        useUserStore().setId(response.data.id);
-      } catch (error) {
-        console.error(error);
-      }
+    goProfiel() {
+      // window.history.back();
+      this.$router.push("profiel");
     },
-  },
-  mounted() {
-    this.getUserData();
   },
 };
 </script>

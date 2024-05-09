@@ -34,5 +34,8 @@ export const useUserStore = defineStore("userStore", {
     setDescription(newValue) {
       this.description = newValue;
     },
+    setPhoto(newValue) {
+      this.photo = newValue;
+    },
   },
 });
