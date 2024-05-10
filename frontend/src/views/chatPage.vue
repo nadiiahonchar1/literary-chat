@@ -1,12 +1,16 @@
 <template>
-  <div>
-    <h1>{{ chatHeader }}</h1>
-    <div v-if="messages.length > 0">
+  <div class="chat-list">
+    <header class="container-header header">
+      <button-with-icon iconName="back-arrow.svg" @clicked="goBack" />
+      <h2>{{ chatHeader }}</h2>
+      <button-with-icon iconName="search.svg" />
+    </header>
+    <div class="chat-item container-chat" v-if="messages.length > 0">
       <div v-for="(message, index) in messages" :key="index">
         {{ message }}
       </div>
     </div>
-    <div v-else>
+    <div class="chat-item container-chat" v-else>
       <p>Тут пусто</p>
     </div>
   </div>
@@ -14,8 +18,12 @@
 
 <script>
 import chatsList from "@/chat-list.json";
+import ButtonWithIcon from "@/components/UI/ButtonWithIcon.vue";
 
 export default {
+  components: {
+    ButtonWithIcon,
+  },
   data() {
     return {
       chatName: "",
@@ -30,6 +38,10 @@ export default {
     this.setChatHeader(this.chatName);
   },
   methods: {
+    goBack() {
+      // window.history.back();
+      this.$router.push("main");
+    },
     fetchMessages(chatName) {
       // Виконати запит до API для отримання повідомлень для конкретного чату
       fetch(`https://api/${chatName}`)
