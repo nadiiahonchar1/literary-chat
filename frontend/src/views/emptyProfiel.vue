@@ -77,13 +77,9 @@ export default {
   data() {
     return {
       backIcon: "@/assets/icons/back-arrow.svg",
-      yourNickname: useUserStore().nikname || "@yourNickname",
       modal: false,
-      name: useUserStore().name || "",
-      aboutYou: useUserStore().description || "",
       buttonTitle: "Зберегти зміни",
       buttonskip: "Скасувати",
-      profilePhoto: useUserStore().photo || null,
     };
   },
   methods: {
@@ -136,6 +132,28 @@ export default {
   computed: {
     isNextDisabled() {
       return !(this.name && this.aboutYou);
+    },
+    yourNickname() {
+      return useUserStore().nikname || "@yourNickname";
+    },
+    name: {
+      get() {
+        return useUserStore().name || "";
+      },
+      set(value) {
+        useUserStore().setName(value);
+      },
+    },
+    aboutYou: {
+      get() {
+        return useUserStore().description || "";
+      },
+      set(value) {
+        useUserStore().setDescription(value);
+      },
+    },
+    profilePhoto() {
+      return useUserStore().photo || null;
     },
   },
   mounted() {
