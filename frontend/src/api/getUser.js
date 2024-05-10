@@ -9,9 +9,7 @@ export async function getUser() {
       {
         headers: {
           "api-key": process.env.VUE_APP_API_KEY,
-          Accept: "*/*",
           "Content-Type": "application/json",
-          "Postman-Token": "8c22fb14-40d9-48d3-a69a-7863e5cc4923",
           "X-Requested-With": "XMLHttpRequest",
         },
       }

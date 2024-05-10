@@ -66,7 +66,7 @@ const routes = [
         path: "main",
         component: MainPage,
         name: MainPage,
-        // meta: { requiresAuth: true },
+        meta: { requiresAuth: true },
       },
       {
         path: "/:chatName",

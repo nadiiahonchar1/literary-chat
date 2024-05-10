@@ -63,6 +63,7 @@ import AppArea from "@/components/UI/AppArea.vue";
 import btn from "@/components/greetings/button-table.vue";
 import { addDescription } from "@/api/addDescription";
 import { getUser } from "@/api/getUser";
+import { getPhoto } from "@/api/getPhoto";
 import { useUserStore } from "@/stores/UserStore";
 
 export default {
@@ -114,6 +115,19 @@ export default {
         const response = await getUser();
         useUserStore().setId(response.data.id);
         useUserStore().setNikname(response.data.username);
+        useUserStore().setName(response.data.nickname);
+        useUserStore().setEmail(response.data.email);
+        // useUserStore().setDescription(response.data.description);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        this.getUserImg();
+      }
+    },
+    async getUserImg() {
+      try {
+        const response = await getPhoto(useUserStore().id);
+        useUserStore().setPhoto(response.data);
       } catch (error) {
         console.error(error);
       }
