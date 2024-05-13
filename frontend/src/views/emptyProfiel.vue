@@ -109,13 +109,15 @@ export default {
     async getUserData() {
       try {
         const response = await getUser();
-        useUserStore().setId(response.data.id);
-        useUserStore().setNikname(response.data.username);
-        useUserStore().setName(response.data.nickname);
-        useUserStore().setEmail(response.data.email);
-        useUserStore().setDescription(response.data.description);
-        useUserStore().setRole(response.data.role);
-        console.log(response.data);
+        const myUser = useUserStore();
+        const { id, username, nickname, email, description, role } =
+          response.data;
+        myUser.setId(id);
+        myUser.setNikname(username);
+        myUser.setName(nickname);
+        myUser.setEmail(email);
+        myUser.setDescription(description);
+        myUser.setRole(role);
       } catch (error) {
         console.error(error);
       } finally {

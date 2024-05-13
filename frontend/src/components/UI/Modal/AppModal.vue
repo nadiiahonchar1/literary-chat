@@ -24,10 +24,8 @@ export default {
       this.$emit("close");
     },
     async handleImageSelected(imageData) {
-      localStorage.setItem("savedPhoto", imageData);
       try {
-        const response = await addPhoto(imageData);
-        console.log(response);
+        await addPhoto(imageData);
       } catch (error) {
         console.error(error);
       }
