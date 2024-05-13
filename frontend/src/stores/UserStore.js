@@ -7,6 +7,7 @@ export const useUserStore = defineStore("userStore", {
     name: "",
     photo: "",
     description: "",
+    role: "",
     id: null,
   }),
   getters: {
@@ -36,6 +37,9 @@ export const useUserStore = defineStore("userStore", {
     },
     setPhoto(newValue) {
       this.photo = newValue;
+    },
+    setRole(newValue) {
+      this.role = newValue;
     },
   },
 });

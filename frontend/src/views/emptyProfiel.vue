@@ -113,7 +113,9 @@ export default {
         useUserStore().setNikname(response.data.username);
         useUserStore().setName(response.data.nickname);
         useUserStore().setEmail(response.data.email);
-        // useUserStore().setDescription(response.data.description);
+        useUserStore().setDescription(response.data.description);
+        useUserStore().setRole(response.data.role);
+        console.log(response.data);
       } catch (error) {
         console.error(error);
       } finally {
