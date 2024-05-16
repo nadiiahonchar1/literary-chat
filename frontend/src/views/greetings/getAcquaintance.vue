@@ -63,8 +63,8 @@ export default {
       buttonTitle: "Зберегти та увійти",
       buttonskip: "",
       nicknameError: false,
-      isLoaded: false,
-      IsActive: false,
+      isLoaded:false,
+      IsActive:false,
     };
   },
   components: {
@@ -112,6 +112,8 @@ export default {
       this.nicknameError = "Лише латинські літери і цифри.";
     },
     async submitAllData() {
+      this.isLoaded =true,
+      this.IsActive =!this.IsActive,
       useUserStore().setNikname(this.nikname);
       try {
         const response = await submitAllData(
@@ -120,9 +122,11 @@ export default {
         );
         if (response.success) {
           this.isLoaded = false;
+          this.IsActive = false,
           this.$router.push("registcode");
         }
       } catch (error) {
+        this.isLoaded = false;
         console.error(error);
       }
     },

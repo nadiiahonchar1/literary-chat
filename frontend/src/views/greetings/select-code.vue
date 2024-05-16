@@ -19,6 +19,7 @@
         <div class="slide__code">
           <input
             v-model="valueCode[0]"
+            name="code[]"
             type="tel"
             maxlength="1"
             class="slide__item"
@@ -26,6 +27,7 @@
           />
           <input
             v-model="valueCode[1]"
+            name="code[]"
             type="tel"
             maxlength="1"
             class="slide__item"
@@ -34,6 +36,7 @@
           />
           <input
             v-model="valueCode[2]"
+            name="code[]"
             type="tel"
             maxlength="1"
             class="slide__item"
@@ -42,6 +45,7 @@
           />
           <input
             v-model="valueCode[3]"
+            name="code[]"
             type="tel"
             maxlength="1"
             class="slide__item"
@@ -49,16 +53,15 @@
             ref="input3"
           />
         </div>
-        <div v-if="erorr">
+        <div v-show="erorr" class="slide__erorr">
           {{ erorrMesage }}
         </div>
-        <div class="slide__descript">
-          <div class="regist__description regsit-descript">
-            Код підтвердження не отримано?
-          </div>
-          <div class="regist__description regsit-descript">
-            Відправити ще раз
-          </div>
+        <div class="slide__repeat" v-show="reapeteMesag">
+          {{ reapeteMesage }}
+        </div>
+        <div class="slide__descript regsit-descript">
+            <div>Код підтвердження не отримано?</div>
+            <button @click="repeateCode" class="slide__btn-desc">Відправити ще раз</button>
         </div>
         <btn :title="buttonTitle" @click="save" />
       </div>
@@ -76,6 +79,7 @@
 import btn from "@/components/greetings/button-table.vue";
 import preload from "@/components/greetings/preload/pre-load.vue";
 import { getVerify } from "@/api/getVerify";
+import { repeat } from "@/api/repeat";
 import { useUserStore } from "@/stores/UserStore";
 
 export default {
@@ -87,6 +91,8 @@ export default {
       IsActive: false,
       erorr: false,
       erorrMesage: "Код введений невірно. Будь ласка, спробуй ще раз.",
+      incorect: false,
+      reapeteMesag: false,
     };
   },
   components: {
@@ -94,15 +100,6 @@ export default {
     preload,
   },
   methods: {
-    getkeyLocalstore(keys) {
-      for (let key of keys) {
-        let value = localStorage.getItem(key);
-        if (value !== null) {
-          return value;
-        }
-      }
-      return null;
-    },
     tonext(index) {
       if (this.valueCode[index].length >= 1) {
         const inputs = [
@@ -121,17 +118,33 @@ export default {
       this.IsActive = !this.IsActive;
       const verificationCode = this.valueCode.join("");
       try {
-        await getVerify(useUserStore().email, verificationCode);
-
-        this.$router.push("profiel");
-        this.isLoaded = false;
+        const response = await getVerify(useUserStore().email, verificationCode);
+        if(response.success) {
+          this.$router.push("profile");
+          this.isLoaded = false;
+        } else {
+          this.isLoaded = false;
+          this.IsActive = false;
+          this.erorr = true;
+          this.incorect = true;
+        }
       } catch (error) {
         console.error(error);
+      }
+     
+    },
+    async repeateCode(){
+      this.isLoaded = true;
+      this.IsActive = !this.IsActive;
+      try {
+        await repeat(useUserStore().email);
         this.isLoaded = false;
         this.IsActive = false;
-        this.showError = true;
+      } catch (error) {
+        console.error(error);
       }
-    },
+      
+    }
   },
   watch: {
     IsActive(value) {
@@ -141,6 +154,12 @@ export default {
       } else {
         document.querySelector(".slide").classList.remove("active");
         document.querySelector(".content-container").classList.remove("load");
+      }
+    },
+    incorect(){
+      let inp = document.querySelectorAll('.slide__item')
+      for(let i = 0; i < inp.length;i++){
+        inp[i].classList.add('red')
       }
     },
   },

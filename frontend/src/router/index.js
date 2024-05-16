@@ -53,7 +53,7 @@ const routes = [
         name: getAcquaintance,
       },
       {
-        path: "profiel",
+        path: "profile",
         component: emptyProfiel,
         name: emptyProfiel,
       },

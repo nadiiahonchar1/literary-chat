@@ -3,10 +3,8 @@
 @import "@/assets/varibles/_fonts";
 // style for first-btn
 .btn {
-  // width: $widthbtn;
   display: block;
-  min-width: 358px;
-  width: 66%;
+  width: 100%;
 
   background-color: $slidebtn;
   border-radius: $borderradius;

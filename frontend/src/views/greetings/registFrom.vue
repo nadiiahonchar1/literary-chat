@@ -92,13 +92,15 @@ export default {
       try {
         const response = await signIn(this.email);
         if (response.success) {
+          this.isLoaded = false;
+          this.IsActive = false,
           this.$router.push("registcode");
         } else {
-          throw new Error("Unexpected response status");
+          // throw new Error("Unexpected response status");
+          this.$router.push("get-acquaintance");
         }
       } catch (error) {
         console.error("Error", error);
-        this.$router.push("get-acquaintance");
       } finally {
         useUserStore().setEmail(this.email);
         this.isLoaded = false;
