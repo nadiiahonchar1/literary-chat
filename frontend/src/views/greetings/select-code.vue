@@ -56,9 +56,9 @@
         <div v-show="erorr" class="slide__erorr">
           {{ erorrMesage }}
         </div>
-        <div class="slide__repeat" v-show="reapeteMesag">
+        <!-- <div class="slide__repeat" v-show="reapeteMesag">
           {{ reapeteMesage }}
-        </div>
+        </div> -->
         <div class="slide__descript regsit-descript">
             <div>Код підтвердження не отримано?</div>
             <button @click="repeateCode" class="slide__btn-desc">Відправити ще раз</button>
@@ -92,7 +92,7 @@ export default {
       erorr: false,
       erorrMesage: "Код введений невірно. Будь ласка, спробуй ще раз.",
       incorect: false,
-      reapeteMesag: false,
+      // reapeteMesag: false,
     };
   },
   components: {
@@ -131,7 +131,6 @@ export default {
       } catch (error) {
         console.error(error);
       }
-     
     },
     async repeateCode(){
       this.isLoaded = true;
@@ -169,8 +168,3 @@ export default {
 };
 </script>
 
-<style>
-.error-border {
-  border: 1px solid red;
-}
-</style>
