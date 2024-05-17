@@ -4,7 +4,8 @@
 // style for first-btn
 .btn {
   display: block;
-  width: 100%;
+  min-width: 358px;
+  width: 66%;
 
   background-color: $slidebtn;
   border-radius: $borderradius;

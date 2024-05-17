@@ -52,7 +52,7 @@ export default {
   methods: {
     goProfiel() {
       // window.history.back();
-      this.$router.push("profiel");
+      this.$router.push("profile");
     },
   },
 };

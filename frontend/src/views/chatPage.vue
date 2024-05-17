@@ -44,22 +44,24 @@ export default {
     },
     fetchMessages(chatName) {
       // Виконати запит до API для отримання повідомлень для конкретного чату
-      fetch(`https://api/${chatName}`)
-        .then((response) => response.json())
-        .then((data) => {
-          this.messages = data;
-        })
-        .catch((error) => {
-          console.error("Error fetching messages:", error);
-        });
+      // fetch(`https://api/${chatName}`)
+      //   .then((response) => response.json())
+      //   .then((data) => {
+      //     this.messages = data;
+      //   })
+      //   .catch((error) => {
+      //     console.error("Error fetching messages:", error);
+      //   });
+      console.log("fetchMessages", chatName);
     },
     setChatHeader(chatName) {
-      const chat = this.chats.find((chat) => chat.iconName === chatName);
-      if (chat) {
-        this.chatHeader = chat.name;
-      } else {
-        console.error("Chat not found in the chats list.");
-      }
+      // const chat = this.chats.find((chat) => chat.iconName === chatName);
+      // if (chat) {
+      //   this.chatHeader = chat.name;
+      // } else {
+      //   console.error("Chat not found in the chats list.");
+      // }
+      console.log("setChatHeader", chatName);
     },
   },
 };

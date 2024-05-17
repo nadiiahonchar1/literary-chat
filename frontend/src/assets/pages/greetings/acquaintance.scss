@@ -49,7 +49,8 @@
   }
   &__explanation {
     margin: 0 auto 29px auto;
-    width: 100%;
+    min-width: 358px;
+    width: 66%;
     font-weight: 400;
     font-size: 10px;
     color: $disabled-text-color;

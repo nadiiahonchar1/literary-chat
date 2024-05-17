@@ -22,7 +22,8 @@
 
 .form-control-input {
   position: relative;
-  width: 100%;
+  min-width: 358px;
+  width: 66%;
   margin-left: auto;
   margin-right: auto;
 }
