@@ -9,13 +9,14 @@ import slide4 from '@/views/greetings/slide-4.vue';
 import getAcquaintance from "@/views/greetings/getAcquaintance.vue";
 import registFrom from '@/views/greetings/registFrom.vue';
 import emptyProfiel from '@/views/emptyProfiel.vue'
-import regesit from '@/views/greetings/select-code.vue'
+import regist from '@/views/greetings/select-code.vue'
 
 import MainPage from '@/views/mainPage.vue';
 import ChatPage from '@/views/chatPage.vue';
 
 const pinia = createPinia();
 setActivePinia(pinia);
+
 
 const routes = [
   {
@@ -45,22 +46,23 @@ const routes = [
       {
         path: "regist-form",
         component: registFrom,
-        name: registFrom,
+        name: "registFrom",
+        
       },
       {
         path: "get-acquaintance",
         component: getAcquaintance,
-        name: getAcquaintance,
+        name: "getAcquaintance",
       },
       {
         path: "profile",
         component: emptyProfiel,
-        name: emptyProfiel,
+        name: "emptyProfiel",
       },
       {
         path: "registcode",
-        component: regesit,
-        name: regesit,
+        component: regist,
+        name: 'regist',
       },
       {
         path: "main",
@@ -92,7 +94,6 @@ router.beforeEach((to, from, next) => {
     next(); 
   }
 });
-
 
 function checkIfUserIsLoggedIn(store) {
   const id = store.id;

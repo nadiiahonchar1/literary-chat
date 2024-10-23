@@ -9,7 +9,9 @@ export const useUserStore = defineStore("userStore", {
     description: "",
     role: "",
     id: null,
+    valueCode: ["", "", "", ""],
   }),
+  
   getters: {
     // loggedIn: (state) => state.id !== null,
   },
@@ -41,5 +43,12 @@ export const useUserStore = defineStore("userStore", {
     setRole(newValue) {
       this.role = newValue;
     },
+    //цифры передача из registcode в компненты кнопок 
+    setValueCode(newValueCode){
+      this.valueCode = newValueCode
+    }
   },
+  beforeCreate(){
+    this.clearUser
+  }
 });

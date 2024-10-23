@@ -29,6 +29,7 @@
 <script>
 import btn from "@/components/greetings/button-table.vue";
 import PageIndicator from "@/components/UI/PageIndicator.vue";
+import { useUserStore } from "@/stores/UserStore";
 export default {
   components: {
     btn,
@@ -43,6 +44,7 @@ export default {
   methods: {
     nextpage() {
       this.$router.push("regist-form");
+      console.log(useUserStore());
     },
     skipall() {
       this.$router.push("regist-form");

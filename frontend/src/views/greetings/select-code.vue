@@ -63,7 +63,11 @@
             <div>Код підтвердження не отримано?</div>
             <button @click="repeateCode" class="slide__btn-desc">Відправити ще раз</button>
         </div>
-        <btn :title="buttonTitle" @click="save" />
+        <div class="btn__auto">
+           <fromregistfrom v-if="condition === 'showbtn2'"  />
+           <fromgetAcqua  v-if ="condition === 'showbtn1'"/>
+        </div>
+        <!---end-->
       </div>
       <div class="prel" v-if="isLoaded">
         <div class="slide__prell">
@@ -76,95 +80,74 @@
 </template>
 
 <script>
-import btn from "@/components/greetings/button-table.vue";
-import preload from "@/components/greetings/preload/pre-load.vue";
-import { getVerify } from "@/api/getVerify";
-import { repeat } from "@/api/repeat";
+import { ref, computed, watch } from 'vue';
 import { useUserStore } from "@/stores/UserStore";
+import { useRoute } from 'vue-router'; 
+import preload from "@/components/greetings/preload/pre-load.vue";
+import fromregistfrom from '@/components/greetings/btns/buttonfrom-registFrom.vue';
+import fromgetAcqua from '@/components/greetings/btns/buttonFrom-getAcquaintance.vue';
 
 export default {
-  data() {
-    return {
-      buttonTitle: "Увійти",
-      valueCode: ["", "", "", ""],
-      isLoaded: false,
-      IsActive: false,
-      erorr: false,
-      erorrMesage: "Код введений невірно. Будь ласка, спробуй ще раз.",
-      incorect: false,
-      // reapeteMesag: false,
-    };
-  },
   components: {
-    btn,
     preload,
+    fromregistfrom,
+    fromgetAcqua,
   },
-  methods: {
-    tonext(index) {
-      if (this.valueCode[index].length >= 1) {
-        const inputs = [
-          this.$refs.input0,
-          this.$refs.input1,
-          this.$refs.input2,
-          this.$refs.input3,
-        ];
-        if (index < inputs.length - 1) {
-          inputs[index + 1].focus();
-        }
-      }
-    },
-    async save() {
-      this.isLoaded = true;
-      this.IsActive = !this.IsActive;
-      const verificationCode = this.valueCode.join("");
-      try {
-        const response = await getVerify(useUserStore().email, verificationCode);
-        if(response.success) {
-          this.$router.push("profile");
-          this.isLoaded = false;
-        } else {
-          this.isLoaded = false;
-          this.IsActive = false;
-          this.erorr = true;
-          this.incorect = true;
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    },
-    async repeateCode(){
-      this.isLoaded = true;
-      this.IsActive = !this.IsActive;
-      try {
-        await repeat(useUserStore().email);
-        this.isLoaded = false;
-        this.IsActive = false;
-      } catch (error) {
-        console.error(error);
-      }
-      
+  setup() {
+    const codeStore = useUserStore();
+    const route = useRoute(); 
+
+    const valueCode = ref([]);
+    const isLoaded = ref(false);
+    const error = ref(false);
+    const errorMessage = "Код введений невірно. Будь ласка, спробуй ще раз.";
+
+    const condition = computed(() => route.query.condition); 
+
+    const tonext = (index) => {
+  if (valueCode.value[index].length >= 1) {
+    const inputs = [
+      inputRefs.input0,
+      inputRefs.input1,
+      inputRefs.input2,
+      inputRefs.input3,
+    ];
+    if (index < inputs.length - 1 && inputs[index + 1].value) {
+      inputs[index + 1].focus();
     }
-  },
-  watch: {
-    IsActive(value) {
-      if (value) {
-        document.querySelector(".slide").classList.add("active");
-        document.querySelector(".content-container").classList.add("load");
-      } else {
-        document.querySelector(".slide").classList.remove("active");
-        document.querySelector(".content-container").classList.remove("load");
-      }
-    },
-    incorect(){
-      let inp = document.querySelectorAll('.slide__item')
-      for(let i = 0; i < inp.length;i++){
-        inp[i].classList.add('red')
-      }
-    },
-  },
-  mounted() {
-    this.$refs.inputs = this.$el.querySelectorAll("input");
+    console.log(valueCode);
+    
+  }
+};
+
+    const updateCode = () => {
+      codeStore.setValueCode(valueCode.value);
+    };
+
+    watch(valueCode, () => {
+      updateCode();
+    }, { deep: true });
+
+    const inputRefs = {
+      input0: ref(null),
+      input1: ref(null),
+      input2: ref(null),
+      input3: ref(null),
+    };
+
+    return {
+      valueCode,
+      isLoaded,
+      error,
+      errorMessage,
+      condition,
+      tonext,
+      inputRefs,
+    };
   },
 };
 </script>
+
+
+
 

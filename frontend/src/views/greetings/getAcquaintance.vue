@@ -113,21 +113,19 @@ export default {
     },
     async submitAllData() {
       this.isLoaded =true,
-      this.IsActive =!this.IsActive,
-      useUserStore().setNikname(this.nikname);
+      this.IsActive =!this.IsActive;
+      let condition = 'default';
       try {
-        const response = await submitAllData(
+        await submitAllData(
           this.nikname,
-          useUserStore().email
+          useUserStore().email,
         );
-        if (response.success) {
-          this.isLoaded = false;
-          this.IsActive = false,
-          this.$router.push("registcode");
-        }
-      } catch (error) {
         this.isLoaded = false;
-        console.error(error);
+        this.IsActive = false,
+        condition = 'showbtn2'
+        this.$router.push({name:'regist', query: { condition }});
+      } finally {
+        useUserStore().setNikname(this.nikname);
       }
     },
   },

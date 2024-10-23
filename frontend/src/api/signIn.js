@@ -17,9 +17,9 @@ export async function signIn(email) {
       body,
       { headers }
     );
-    return { success: true, data: response.data };
+    return { status: true, data: response.data };
   } catch (error) {
     console.error(error);
-    return { success: false, error };
+    return { status: false, error };
   }
 }

@@ -64,6 +64,7 @@ import AppInput from "@/components/UI/AppInput.vue";
 import btn from "@/components/greetings/button-table.vue";
 import preload from "@/components/greetings/preload/pre-load.vue";
 import { signIn } from "@/api/signIn";
+import { resendverification } from "@/api/resend-verification-code"
 import { useUserStore } from "@/stores/UserStore";
 
 export default {
@@ -73,6 +74,7 @@ export default {
       btntitle: "Отримати код",
       isLoaded: false,
       IsActive: false,
+      test: 'go'
     };
   },
   components: {
@@ -86,28 +88,35 @@ export default {
     },
   },
   methods: {
-    async requestemail() {
-      this.isLoaded = true;
-      this.IsActive = !this.IsActive;
-      try {
-        const response = await signIn(this.email);
-        if (response.success) {
-          this.isLoaded = false;
-          this.IsActive = false,
-          this.$router.push("registcode");
-        } else {
-          // throw new Error("Unexpected response status");
-          this.$router.push("get-acquaintance");
-        }
-      } catch (error) {
-        console.error("Error", error);
-      } finally {
-        useUserStore().setEmail(this.email);
-        this.isLoaded = false;
+  async requestemail() {
+    this.isLoaded = true;
+    this.IsActive = !this.IsActive;  
+    let condition = 'default';
+    try {
+      const response = await signIn(this.email);
+      if (response.status === false) {
+        if (response.error.response && response.error.response.status === 401 && this.test === 'go1') {
+          condition = 'showbtn2'
+          this.$router.push({ name: 'getAcquaintance', query: { condition }})
+        } else if (response.error.response && response.error.response.status === 400 && this.test === 'go') {
+          await resendverification(this.email)
+          condition = 'showbtn1'
+          this.$router.push({name:'regist', query: { condition }})
+        } 
+      } else if (response.status === true) {
+        await signIn(this.email)
+        condition = 'showbtn2'
+        this.$router.push({name:'regist', query: { condition }})
       }
-    },
-  },
-  watch: {
+    } catch (error) {
+      console.error('Произошла ошибка:', error.message || error);
+    } finally {
+      useUserStore().setEmail(this.email);
+      this.isLoaded = false;  
+    }
+  }
+},
+watch: {
     IsActive(value) {
       if (value) {
         document.querySelector(".slide").classList.add("active");
